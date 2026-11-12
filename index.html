@@ -337,7 +337,7 @@ footer.site-footer{width:auto;margin:0}
       <div class="how__item how__item--pm"><span class="how__n">03 · Performance marketing</span><h3>Winning ads, rebuilt with AI</h3><p>I break down the ads that already perform, then rebuild them with Seedance, Kling and Nano Banana and assemble every layer in After Effects: about 100 creatives a month.</p></div>
       <div class="how__item how__item--pm"><span class="how__n">04 · Performance marketing</span><h3>One variable, real results</h3><p>Each version changes one thing, such as the hook or the person, and is judged on trial starts and cost per trial, not clicks. 191 briefs across 10 apps since January 2026.</p></div>
     </div>
-    <div class="center"><a class="btn btn--white" href="mepic.html#ads">See the AI ads case study</a></div>
+    <div class="center"><a class="btn btn--white" href="mepic.html#ai-videos">See the AI ads case study</a></div>
   </div>
 </section>
 
@@ -456,7 +456,7 @@ footer.site-footer{width:auto;margin:0}
 
 <script>
 (function () {
-  // 10 ads from assets/ads/: web version plays muted in the strip, full version opens with sound
+  // 10 ads from assets/reel/: web version plays muted in the strip, full version opens with sound
   var ADS = ['01_80sFilter', '02_Aging2080', '03_OldPhotoRestore', '04_CouplePortrait', '05_HairChanger',
              '06_PetDance', '07_AICover', '08_VoiceTranslator', '09_PalmReader', '10_NavigationApp'];
   var SOUND = '<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><path d="M11 5 6 9H2v6h4l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/></svg>';
@@ -464,8 +464,8 @@ footer.site-footer{width:auto;margin:0}
   ADS.forEach(function (id) {
     var c = document.createElement('div');
     c.className = 'reel__card';
-    c.dataset.full = 'assets/ads/full/' + id + '.mp4';
-    c.innerHTML = '<video src="assets/ads/web/' + id + '.mp4" poster="assets/ads/posters/' + id + '.jpg" muted loop playsinline preload="none"></video><span class="sound">' + SOUND + '</span>';
+    c.dataset.full = 'assets/reel/full/' + id + '.mp4';
+    c.innerHTML = '<video src="assets/reel/web/' + id + '.mp4" poster="assets/reel/posters/' + id + '.jpg" muted loop playsinline preload="none"></video><span class="sound">' + SOUND + '</span>';
     track.appendChild(c);
   });
   var cards = Array.prototype.slice.call(track.children);
