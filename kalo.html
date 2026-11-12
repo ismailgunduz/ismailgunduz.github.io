@@ -1,0 +1,650 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1440" id="vp">
+<script>/* phones get the mobile layout; tablets and desktops keep the 1440 design */if(Math.min(screen.width,screen.height)<768)document.getElementById('vp').setAttribute('content','width=device-width,initial-scale=1');</script>
+<title>Kalo | Ismail Gunduz</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Anton&display=swap">
+<style>
+/* =====================================================================
+   CASE STUDY TEMPLATE (BiP is the reference page, 12 Nov 2026)
+   Order: hero → title + meta → summary & challenge → my role
+          → process index → full-bleed screen strip → #01…#NN sections
+          → impact (big type) → looking back → next case → footer
+   Reuse every .cs-* class on the other case pages; only content changes.
+   ===================================================================== */
+:root{
+  --bg:#0D1019; --bg-alt:#111521; --white:#FFFFFF; --muted:#ABABAB;
+  --blue:#4AB3FD; --grad:linear-gradient(108deg,#4AB3FD 0%,#87B2D6 100%);
+  --line:rgba(255,255,255,.12); --glass:rgba(255,255,255,.04); --glass-line:rgba(255,255,255,.08);
+  --text:rgba(255,255,255,.88);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{width:1440px;margin:0 auto;background:var(--bg);color:var(--white);font:400 18px/1.6 Inter,system-ui,-apple-system,"Segoe UI",sans-serif}
+a{color:inherit;text-decoration:none}
+.grad{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.wrap{padding:0 72px}
+.btn{display:inline-flex;align-items:center;gap:10px;height:54px;padding:0 24px;border-radius:100px;font-weight:700;font-size:18px}
+.btn--grad{background:var(--grad);color:#fff}
+.btn--sm{height:36px;padding:0 16px;font-size:13px}
+.btn--dark{height:40px;padding:0 18px;font-size:14px;background:var(--bg);border:1px solid var(--line)}
+
+/* header */
+header{position:absolute;top:0;left:0;width:max(100vw,1440px);height:64px;padding:0 20px;display:flex;align-items:center;justify-content:space-between;z-index:5}
+header nav{display:flex;gap:32px;font-size:14px;font-weight:600}
+header nav a:hover{color:var(--blue)}
+
+/* hero: full-bleed key visual (headline lives in the image) */
+.cs-hero{width:max(100vw,1440px);margin-left:min(0px,calc(720px - 50vw));aspect-ratio:2048/1260;background:#1B5E9A url("assets/cases/bip/hero4.jpg?v=4") center/cover no-repeat;background-image:image-set(url("assets/cases/bip/hero4.jpg?v=4") 1x,url("assets/cases/bip/hero4@2x.jpg?v=4") 2x)}
+
+/* title + meta */
+.cs-title{padding-top:72px}
+.cs-back{display:table;font-size:15px;color:var(--blue);margin-bottom:18px}
+.cs-title h1{font-size:64px;line-height:72px;font-weight:800;letter-spacing:-1.4px;display:inline-block}
+.cs-title p{font-size:22px;line-height:34px;margin-top:8px;color:rgba(255,255,255,.8)}
+.cs-meta{display:grid;grid-template-columns:repeat(4,1fr);margin-top:44px;border:1px solid var(--line);border-radius:20px}
+.cs-meta div{padding:22px 28px}
+.cs-meta div+div{border-left:1px solid var(--line)}
+.cs-meta span{display:block;font-size:12px;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.cs-meta b{font-size:18px;font-weight:600}
+
+/* summary & challenge: big uppercase label left, text right */
+.cs-summary{display:grid;grid-template-columns:400px 1fr;gap:72px;padding-top:110px}
+.cs-label{font-size:40px;line-height:46px;font-weight:800;text-transform:uppercase;letter-spacing:-.4px}
+.cs-summary__txt p{font-size:19px;line-height:31px;margin-bottom:18px;color:var(--text)}
+.cs-list{list-style:none;margin:6px 0 0}
+.cs-list li{position:relative;padding-left:22px;font-size:17px;line-height:27px;color:var(--text);margin-bottom:10px}
+.cs-list li:before{content:"";position:absolute;left:0;top:10px;width:8px;height:8px;border-radius:50%;background:var(--blue)}
+.cs-sub{font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--blue);margin:30px 0 14px}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+.chip{display:inline-flex;align-items:center;padding:8px 16px;border-radius:100px;font-size:14px;border:1px solid var(--glass-line);background:linear-gradient(137deg,#353442 -166%,#0D0E12 100%)}
+.cs-note{margin-top:22px;font-size:15px;line-height:24px;color:var(--muted)}
+
+/* process index: every card jumps to its section */
+.cs-process{padding-top:120px;padding-bottom:110px}
+.cs-process h2{text-align:center;font-size:32px;font-weight:800;text-transform:uppercase;margin-bottom:40px}
+.cs-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.cs-step{display:block;padding:26px 28px;border:1px solid var(--glass-line);border-radius:18px;background:var(--glass);transition:border-color .2s,background .2s,transform .2s}
+.cs-step:hover{border-color:rgba(74,179,253,.55);background:rgba(74,179,253,.06);transform:translateY(-2px)}
+.cs-step b{display:block;font-size:13px;font-weight:700;color:var(--blue);letter-spacing:1px}
+.cs-step h3{font-size:21px;line-height:28px;font-weight:800;margin:8px 0 6px;text-transform:uppercase}
+.cs-step p{font-size:15px;line-height:23px;color:rgba(255,255,255,.72)}
+.cs-step i{font-style:normal;display:inline-block;margin-top:12px;font-size:14px;font-weight:600;color:var(--blue)}
+
+/* full-bleed screen strip between intro and sections */
+.cs-strip{width:max(100vw,1440px);margin-left:min(0px,calc(720px - 50vw));aspect-ratio:2048/790;background:#1B6FB8 url("assets/cases/bip/strip.jpg?v=1") center/cover no-repeat;background-image:image-set(url("assets/cases/bip/strip.jpg?v=1") 1x,url("assets/cases/bip/strip@2x.jpg?v=1") 2x)}
+
+/* numbered sections (#01, #02 …) */
+.cs-sec{padding-top:120px;padding-bottom:40px;scroll-margin-top:24px}
+.cs-sec--alt{background:var(--bg-alt);padding-bottom:120px;margin-top:80px}
+.cs-sec--alt+.cs-sec--alt{margin-top:0}
+.cs-num{display:block;font-size:22px;font-weight:800;color:var(--blue);line-height:1}
+.cs-h2{font-size:48px;line-height:54px;font-weight:800;text-transform:uppercase;letter-spacing:-.6px;margin:6px 0 26px}
+.cs-txt{max-width:800px}
+.cs-txt h3{font-size:26px;line-height:34px;font-weight:700;margin-bottom:14px}
+.cs-txt p{font-size:18px;line-height:30px;margin-bottom:16px;color:var(--text)}
+.cs-result{display:inline-block;margin-top:6px;padding:12px 20px;border-radius:14px;background:rgba(74,179,253,.1);border:1px solid rgba(74,179,253,.35)}
+.cs-result b{color:var(--blue);font-size:22px}
+.cs-sec .cs-sub{margin:56px 0 18px;color:var(--muted)}
+.cs-split{display:grid;grid-template-columns:1.25fr 1fr;gap:72px;align-items:center}
+.cs-split--rev{grid-template-columns:1fr 1fr}
+
+/* small 9:16 flow steps, all the same size */
+.flow{display:flex;align-items:flex-start}
+.flow--grid{gap:24px}
+.st{margin:0;width:170px;flex:none}
+.st img{display:block;width:170px;height:302px;object-fit:cover;object-position:top;border-radius:14px;box-shadow:0 14px 30px rgba(0,0,0,.35)}
+.st figcaption{font-size:13px;line-height:18px;color:rgba(255,255,255,.7);margin-top:10px}
+.ar{flex:none;width:34px;text-align:center;padding-top:140px;color:var(--blue);font-size:16px}
+.lanes{display:grid;gap:22px}
+.lane{display:grid;grid-template-columns:230px 1fr;align-items:start;padding:22px 24px;border:1px solid var(--line);border-radius:20px}
+.lane__who{display:flex;flex-direction:column;gap:8px;padding-top:6px}
+.lane__who span{align-self:flex-start;font-size:13px;font-weight:600;padding:6px 12px;border-radius:999px;background:rgba(74,179,253,.12);color:#cfe9ff}
+.lane__steps{display:flex;align-items:flex-start}
+.lane .st,.lane .st img{width:200px}
+.lane .st img{height:356px}
+.lane .ar{padding-top:168px}
+
+/* long phones: one frame for every showcase screen */
+.phones{display:grid;gap:36px;align-items:start}
+.phones--3{grid-template-columns:repeat(3,1fr)}
+.phones--4{grid-template-columns:repeat(4,1fr)}
+.phones--5{grid-template-columns:repeat(5,1fr);gap:28px}
+.phones--flow .ph{position:relative}
+.phones--flow .ph:not(:last-child):after{content:"→";position:absolute;right:-27px;top:44%;color:var(--blue);font-size:18px}
+.ph{margin:0}
+.ph__f{border-radius:30px;padding:7px;background:#0b0d12;box-shadow:0 24px 50px rgba(0,0,0,.45),inset 0 0 0 1px rgba(255,255,255,.08)}
+.ph__f img{display:block;width:100%;aspect-ratio:1/2.165;object-fit:cover;object-position:top;border-radius:24px}
+.phones--5 .ph__f{border-radius:24px;padding:6px}
+.phones--5 .ph__f img{border-radius:19px}
+.ph figcaption{font-size:14px;line-height:20px;color:rgba(255,255,255,.7);margin-top:14px;text-align:center}
+
+/* widgets: spec board on white */
+.wg-board{background:#fff;border-radius:24px;padding:40px;display:grid;grid-template-columns:repeat(3,1fr);gap:36px 32px;align-items:end}
+.wg-board figure{margin:0;text-align:center}
+.wg-board img{display:block;margin:0 auto;max-width:100%;height:auto;border-radius:6px}
+.wg-board figcaption{font-size:13px;line-height:18px;color:#5B6070;margin-top:12px}
+.wg-board figcaption b{display:block;color:#1B1F2A;font-size:14px;margin-bottom:2px}
+.wg-small{display:flex;gap:18px;justify-content:center;align-items:end}
+
+.cs-split--wg{grid-template-columns:1fr 700px;align-items:start}
+.cs-split--wg .cs-txt{position:sticky;top:40px;padding-top:10px}
+.wg-kit{margin:0}
+.wg-kit img{display:block;width:100%;border-radius:20px}
+.cs-split--chat{grid-template-columns:300px 1fr;gap:96px;margin-bottom:10px}
+.cs-split--docs{grid-template-columns:1fr 560px;align-items:start;margin-top:64px}
+.phones--narrow{max-width:1000px}
+/* web: simple browser frame */
+.browsers{display:grid;grid-template-columns:repeat(2,1fr);gap:36px 32px;margin-top:48px}
+.br{margin:0}
+.br>img{display:block;width:100%;border-radius:0 0 14px 14px;box-shadow:0 24px 50px rgba(0,0,0,.4)}
+.br__bar{height:30px;background:#20242F;border-radius:14px 14px 0 0;display:flex;align-items:center;gap:7px;padding:0 14px}
+.br__bar i{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.18)}
+.br figcaption{font-size:14px;color:rgba(255,255,255,.7);margin-top:14px;text-align:center}
+
+/* design system + illustration */
+.cs-icons{background:#fff;border-radius:24px;padding:36px}
+.cs-icons img{display:block;width:100%}
+.tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.tl{margin:0}
+.tl img{display:block;width:100%;aspect-ratio:1;border-radius:20px}
+
+/* impact: big condensed type, store links */
+.cs-impact{padding:150px 0 40px;text-align:center}
+.cs-impact .kicker{font-size:26px;line-height:32px;font-weight:500;color:rgba(255,255,255,.8)}
+.cs-impact .big{display:inline-block;font-family:Anton,Impact,"Arial Narrow",sans-serif;font-size:132px;line-height:1.02;letter-spacing:.5px;text-transform:uppercase}
+.cs-impact .pair+.pair{margin-top:56px}
+.cs-impact .stores{display:flex;gap:12px;justify-content:center;margin-top:44px}
+.cs-impact .stores a{display:inline-flex;align-items:center;gap:8px;height:44px;padding:0 20px;border-radius:12px;border:1px solid var(--line);font-size:15px;font-weight:600;transition:border-color .2s}
+.cs-impact .stores a:hover{border-color:var(--blue)}
+.cs-impact small{display:block;margin-top:22px;font-size:14px;color:var(--muted)}
+
+/* looking back */
+.cs-card{max-width:900px;margin:0 auto;background:var(--glass);border:1px solid var(--glass-line);border-radius:20px;padding:40px 44px}
+.cs-card .cs-sub{margin-top:0}
+.cs-card h3{font-size:26px;line-height:34px;font-weight:800;margin-bottom:14px}
+.cs-card p{font-size:17px;line-height:28px;color:var(--text)}
+.cs-back-sec{padding-top:90px}
+
+/* more work: same cards as the homepage */
+.cs-more{padding-top:120px;padding-bottom:110px}
+.cs-more__bar{display:flex;justify-content:space-between;align-items:center;margin-bottom:36px}
+.cs-more__bar h2{font-size:40px;line-height:46px;font-weight:800;text-transform:uppercase}
+.cards{display:grid;grid-template-columns:repeat(3,412px);justify-content:space-between}
+.card{display:block}
+.card__img{position:relative;height:287px;border-radius:20px;overflow:hidden;background:#1A1D27}
+.card__img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease}
+.card:hover .card__img img{transform:scale(1.03)}
+.card__meta{display:flex;align-items:center;gap:15px;margin-top:20px}
+.card__logo{width:58px;height:58px;border-radius:50%;flex:none;overflow:hidden}
+.card__logo img{width:100%;height:100%;display:block}
+.card__meta h4{font-size:24px;font-weight:700;line-height:28px}
+.card__meta p{font-size:16px;color:var(--muted)}
+.card__desc{margin-top:12px;font-size:15px;line-height:22px;color:rgba(255,255,255,.7)}
+.pill-private{font-size:12px;color:var(--muted);border:1px solid var(--line);border-radius:100px;padding:1px 8px;margin-left:8px;vertical-align:middle;font-weight:400}
+.ribbon{position:absolute;top:48px;right:-68px;width:280px;padding:7px 0;transform:rotate(45deg);background:#E0302A;color:#fff;text-align:center;font-size:12px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;box-shadow:0 6px 16px rgba(0,0,0,.28);z-index:1;pointer-events:none}
+
+/* click-to-zoom */
+img.zoom{cursor:zoom-in}
+.zbox{position:fixed;inset:0;background:rgba(5,7,12,.92);display:none;align-items:center;justify-content:center;z-index:100;cursor:zoom-out}
+.zbox.on{display:flex}
+.zbox img{max-width:90vw;max-height:92vh;border-radius:18px}
+
+/* footer on every page */
+footer.site-footer{display:block;width:max(100vw,1440px);margin:0 0 0 min(0px,calc(720px - 50vw));padding:0;border-top:1px solid rgba(255,255,255,.08)}
+.sf__inner{width:1440px;margin:0 auto;padding:28px 36px 30px;display:flex;flex-direction:column;align-items:center;gap:18px;text-align:center}
+.sf__text{margin:0;font-size:15px;font-weight:400;letter-spacing:.1px;color:rgba(255,255,255,.6)}
+.sf__right{display:flex;align-items:center;gap:10px}
+footer.site-footer .sf__icon{display:flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,255,255,.14);color:rgba(255,255,255,.75);transition:color .2s,border-color .2s,background .2s}
+footer.site-footer .sf__icon:hover{color:#fff;border-color:rgba(74,179,253,.6);background:rgba(74,179,253,.08)}
+.sf__icon svg{width:18px;height:18px}
+.sf__dot{width:3px;height:3px;border-radius:50%;background:rgba(255,255,255,.3);margin:0 6px}
+footer.site-footer .sf__cta{color:#4AB3FD;font-size:15px;font-weight:500;letter-spacing:.1px;text-decoration:none;border-bottom:1px solid rgba(74,179,253,.4);padding-bottom:1px;transition:border-color .2s}
+footer.site-footer .sf__cta:hover{border-color:#4AB3FD}
+
+/* back-to-top: appears after scrolling, bottom right */
+.to-top{position:fixed;right:28px;bottom:28px;width:52px;height:52px;border-radius:50%;border:1px solid rgba(74,179,253,.45);background:rgba(13,16,25,.82);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:90;box-shadow:0 10px 30px rgba(0,0,0,.4);opacity:0;visibility:hidden;transform:translateY(12px);transition:opacity .25s,transform .25s,visibility .25s,background .2s,border-color .2s}
+.to-top.on{opacity:1;visibility:visible;transform:none}
+.to-top:hover{background:#4AB3FD;border-color:#4AB3FD}
+.to-top svg{width:22px;height:22px}
+
+/* MePic: built hero (gradient + phones), video ads */
+.mp-hero{width:max(100vw,1440px);margin-left:min(0px,calc(720px - 50vw));height:860px;overflow:hidden;position:relative;background:radial-gradient(1200px 700px at 78% 30%,rgba(190,60,170,.45),transparent 60%),radial-gradient(900px 600px at 10% 90%,rgba(120,40,200,.35),transparent 60%),linear-gradient(120deg,#3A0F4C 0%,#1A0A24 55%,#2A0A1C 100%)}
+.mp-hero__in{width:1440px;height:100%;margin:0 auto;position:relative;padding:0 72px;display:flex;align-items:center}
+.mp-hero__txt{position:relative;z-index:2;max-width:620px}
+.mp-hero__kicker{font-size:22px;line-height:30px;font-weight:500;color:rgba(255,255,255,.85);margin-bottom:14px}
+.mp-hero h2{font-size:76px;line-height:82px;font-weight:800;letter-spacing:-1.6px}
+.mp-hero__phones{position:absolute;right:60px;top:110px;width:720px;height:900px}
+.mp-hero__phones img{position:absolute;width:300px;border-radius:40px;border:8px solid #0b0b10;box-shadow:0 40px 90px rgba(0,0,0,.55)}
+.mp-hero__phones .p1{left:210px;top:0;width:330px;z-index:2}
+.mp-hero__phones .p2{left:0;top:120px;transform:rotate(-6deg);opacity:.92}
+.mp-hero__phones .p3{left:450px;top:120px;transform:rotate(6deg);opacity:.92}
+.cs-strip{background-image:image-set(url("assets/cases/kalo/strip.jpg?v=1") 1x,url("assets/cases/kalo/strip@2x.jpg?v=1") 2x);background-color:#125C3A;aspect-ratio:2048/760}
+.phones--tight{gap:20px}
+.vgrid{display:grid;grid-template-columns:repeat(6,1fr);gap:20px;margin-top:48px}
+.vcard{cursor:pointer}
+.vcard__media{position:relative;aspect-ratio:9/16;border-radius:18px;overflow:hidden;background:#1A1D27}
+.vcard__media video{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease}
+.vcard:hover .vcard__media video{transform:scale(1.03)}
+.vcard h4{margin-top:14px;font-size:16px;font-weight:700;line-height:22px}
+.vcard p{font-size:13px;line-height:19px;color:var(--muted)}
+.center-link{text-align:center;margin-top:40px}
+.center-link a{color:var(--blue);font-weight:600;border-bottom:1px solid rgba(74,179,253,.4)}
+.lightbox{position:fixed;inset:0;background:rgba(5,7,12,.92);display:flex;align-items:center;justify-content:center;z-index:100}
+.lightbox[hidden]{display:none}
+.lightbox video{height:86vh;aspect-ratio:9/16;border-radius:16px;background:#000}
+.lightbox__close{position:absolute;top:24px;right:32px;width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.1);border:0;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.lightbox__close svg{width:22px;height:22px}
+
+/* Kalo: green hero, screens that carry their own phone frame (.bare) */
+.mp-hero--kalo{background:radial-gradient(1100px 680px at 78% 30%,rgba(60,200,120,.38),transparent 60%),radial-gradient(900px 600px at 8% 95%,rgba(242,107,29,.30),transparent 60%),linear-gradient(120deg,#0E4A2E 0%,#0A2A1C 55%,#1C2A12 100%)}
+.mp-hero__phones--bare img{border:0;border-radius:0;box-shadow:none;filter:drop-shadow(0 40px 60px rgba(0,0,0,.55))}
+.cs-steps--3{grid-template-columns:repeat(3,1fr)}
+.bares{display:grid;gap:36px;align-items:start}
+.bares--5{grid-template-columns:repeat(5,1fr);gap:28px}
+.bares--3{grid-template-columns:repeat(3,1fr);max-width:1000px}
+.bares--2{grid-template-columns:repeat(2,1fr);gap:28px}
+.bares--narrow{max-width:900px;margin-top:48px}
+.bare{margin:0}
+.bare img{display:block;width:100%;height:auto;filter:drop-shadow(0 24px 40px rgba(0,0,0,.45))}
+.bare figcaption{font-size:14px;line-height:20px;color:rgba(255,255,255,.7);margin-top:14px;text-align:center}
+.cs-split--long{grid-template-columns:360px 1fr;gap:96px;align-items:start;margin-top:72px}
+.cs-sec>.cs-split--long:first-child,.wrap>.cs-split--long:first-child{margin-top:0}
+#progress .cs-split--long{grid-template-columns:1fr 640px}
+.tag-strip{margin-top:44px;max-width:520px}
+.tag-strip img{display:block;width:100%;border-radius:16px}
+.badges{display:grid;grid-template-columns:repeat(5,1fr);gap:24px 32px;max-width:1000px}
+.badges img{width:100%;height:auto;display:block}
+.banners{display:grid;grid-template-columns:repeat(2,1fr);gap:24px 32px;max-width:1000px}
+.banners img{width:100%;height:auto;display:block}
+/* ==================== MOBILE (phones · generated from _work/scripts/mobile/*.css) ==================== */
+@media (max-width:959px){
+/* shell: every page */
+body{width:auto;font-size:16px;overflow-x:hidden}
+.wrap{padding:0 20px}
+header{width:100%;height:56px;padding:0 16px}
+header nav{gap:16px;font-size:13px}
+header nav a:nth-child(3),header nav a:nth-child(4){display:none}
+header .btn--sm{height:32px;padding:0 12px;font-size:12px}
+footer.site-footer{width:auto;margin:0}
+.sf__inner{width:auto;padding:28px 20px 92px}
+.sf__text{font-size:14px}
+.to-top{right:16px;bottom:16px;width:46px;height:46px}
+.lightbox video{height:auto;width:92vw;max-height:82vh}
+.lightbox--wide video{width:96vw}
+.lightbox__close{top:12px;right:12px}
+.zbox img{max-width:96vw;max-height:88vh;border-radius:10px}
+.cards{grid-template-columns:1fr;gap:40px}
+.card__img{height:auto;aspect-ratio:412/287}
+.card__meta{gap:12px;margin-top:16px}
+.card__logo{width:48px;height:48px}
+.card__meta h4{font-size:20px;line-height:24px}
+.card__meta p{font-size:14px}
+.btn{height:48px;padding:0 20px;font-size:16px}
+.block{padding:40px 0 56px}
+.head{margin-bottom:28px}
+.head h2{font-size:20px;line-height:26px}
+.head .big{font-size:40px;line-height:46px;letter-spacing:-.8px}
+.head .btn{margin-top:20px}
+/* case study template */
+.cs-hero{width:100%;margin-left:0}
+.cs-hero:not(.cs-hero--d1){margin-top:56px}
+.cs-hero--d1:before{height:72px}
+.mp-hero{width:100%;margin-left:0;height:auto}
+.mp-hero__in{width:auto;height:auto;padding:104px 20px 0;flex-direction:column;align-items:flex-start}
+.mp-hero__txt{max-width:none}
+.mp-hero__kicker{font-size:15px;line-height:22px;margin-bottom:10px}
+.mp-hero h2{font-size:40px;line-height:46px;letter-spacing:-.8px}
+.mp-hero__phones{position:relative;right:auto;top:auto;width:750px;height:690px;zoom:.44;align-self:center;margin-top:90px}
+.cs-title{padding-top:44px}
+.cs-title h1{font-size:38px;line-height:44px;letter-spacing:-.8px}
+.cs-title p{font-size:17px;line-height:27px}
+.cs-meta{grid-template-columns:1fr 1fr;margin-top:28px;border-radius:16px}
+.cs-meta div{padding:16px 18px}
+.cs-meta div+div{border-left:0}
+.cs-meta div:nth-child(even){border-left:1px solid var(--line)}
+.cs-meta div:nth-child(n+3){border-top:1px solid var(--line)}
+.cs-meta span{font-size:11px}
+.cs-meta b{font-size:15px}
+.cs-summary{grid-template-columns:1fr;gap:14px;padding-top:56px}
+.cs-label{font-size:26px;line-height:30px}
+.cs-summary__txt p{font-size:16px;line-height:27px}
+.cs-list li{font-size:16px;line-height:25px}
+.cs-process{padding-top:64px;padding-bottom:56px}
+.cs-process h2{font-size:24px;margin-bottom:22px}
+.cs-steps,.cs-steps--3{grid-template-columns:1fr 1fr;gap:10px}
+.cs-step{padding:14px 14px 16px;border-radius:14px}
+.cs-step b{font-size:12px}
+.cs-step h3{font-size:14px;line-height:19px;margin:6px 0 0;overflow-wrap:break-word}
+.cs-step p,.cs-step i{display:none}
+.cs-strip{width:100%;margin-left:0;aspect-ratio:16/10}
+.cs-sec{padding-top:64px;padding-bottom:24px;scroll-margin-top:12px}
+.cs-sec--alt{padding-bottom:64px;margin-top:48px}
+.cs-num{font-size:18px}
+.cs-h2{font-size:30px;line-height:34px;letter-spacing:-.3px;margin:6px 0 18px;overflow-wrap:break-word}
+.cs-txt h3{font-size:20px;line-height:27px}
+.cs-txt p{font-size:16px;line-height:27px}
+.cs-sec .cs-sub{margin:36px 0 14px}
+.cs-split{grid-template-columns:1fr!important;gap:32px!important}
+.cs-split--long{margin-top:48px}
+.cs-split>.cs-txt{order:-1}
+.cs-split>.bare,.cs-split>.ph{width:min(72%,280px);margin:0 auto}
+.cs-split--wg .cs-txt{position:static}
+/* rows of screens become swipeable carousels */
+.flow,.lane__steps{overflow-x:auto;margin:0 -20px;padding:0 20px 10px;scrollbar-width:none}
+.flow::-webkit-scrollbar,.lane__steps::-webkit-scrollbar,.phones::-webkit-scrollbar,.bares::-webkit-scrollbar,.mloops::-webkit-scrollbar{display:none}
+.st,.st img{width:150px}
+.st img{height:267px}
+.ar{width:26px;padding-top:120px}
+.lane{grid-template-columns:1fr;gap:14px;padding:18px 16px}
+.lane__who{flex-direction:row;flex-wrap:wrap}
+.lane .st,.lane .st img{width:150px}
+.lane .st img{height:267px}
+.lane .ar{padding-top:120px}
+.phones,.bares--5,.bares--3,.mloops{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:24px!important;margin-left:-20px;margin-right:-20px;padding:0 20px 14px;max-width:none!important;scrollbar-width:none}
+.phones>.ph,.bares>.bare,.mloops>figure{flex:0 0 min(62%,260px);scroll-snap-align:center}
+.phones--flow .ph:not(:last-child):after{right:-19px;font-size:15px}
+.ph__f{border-radius:26px;padding:6px}
+.ph__f img{border-radius:21px}
+.ph figcaption,.bare figcaption{font-size:13px;line-height:18px;margin-top:10px}
+.bares--2,.banners{grid-template-columns:1fr 1fr;gap:16px}
+.badges{grid-template-columns:repeat(3,1fr);gap:14px 18px}
+.vgrid{grid-template-columns:repeat(2,1fr);gap:24px 14px;margin-top:32px}
+.vcard h4{font-size:15px}
+.browsers{grid-template-columns:1fr;gap:28px;margin-top:32px}
+.br__bar{height:22px;padding:0 10px;gap:5px;border-radius:10px 10px 0 0}
+.br__bar i{width:7px;height:7px}
+.br>img,.br>video{border-radius:0 0 10px 10px}
+.br figcaption{font-size:13px}
+.tiles{grid-template-columns:repeat(2,1fr);gap:14px}
+.wg-board{grid-template-columns:1fr;padding:20px}
+.cs-icons{padding:14px;border-radius:16px}
+.wg-kit img{border-radius:14px}
+.board{margin-top:28px;border-radius:14px}
+.personas{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:16px;margin:32px -20px 0;padding:0 20px 12px;scrollbar-width:none}
+.personas>figure{flex:0 0 78%;scroll-snap-align:center}
+.findings{grid-template-columns:1fr;gap:16px}
+.findings .cs-card{padding:22px 20px}
+.loop,.proto{max-width:280px;margin-left:auto;margin-right:auto}
+.scrollshot{height:520px}
+.icon-final{width:150px;height:150px;border-radius:34px}
+.commits code{font-size:12px;line-height:18px;overflow-wrap:anywhere}
+.tag-strip{margin-top:28px}
+.cs-impact{padding:80px 0 24px}
+.cs-impact .kicker{font-size:18px;line-height:24px}
+.cs-impact .big{font-size:min(12.5vw,96px)}
+.cs-impact .pair+.pair{margin-top:36px}
+.cs-impact .stores{flex-wrap:wrap;margin-top:32px}
+.cs-back-sec{padding-top:56px}
+.cs-card{padding:24px 20px;border-radius:16px}
+.cs-card h3{font-size:21px;line-height:28px}
+.cs-card p{font-size:16px;line-height:26px}
+.cs-more{padding-top:64px;padding-bottom:56px}
+.cs-more__bar{flex-wrap:wrap;gap:14px;margin-bottom:24px}
+.cs-more__bar h2{font-size:26px;line-height:30px}
+}
+/* ==================== /MOBILE ==================== */
+</style>
+</head>
+<body>
+
+<header>
+  <nav><a href="index.html">Home</a><a href="case-studies.html">Case Studies</a><a href="index.html#how">How I Work</a><a href="index.html#experience">Experience</a><a href="#contact">Contact</a></nav>
+  <a class="btn btn--grad btn--sm" href="assets/Ismail_Gunduz_CV.pdf" target="_blank" rel="noopener">View Résumé</a>
+</header>
+
+<section class="mp-hero mp-hero--kalo">
+  <div class="mp-hero__in">
+    <div class="mp-hero__txt">
+      <p class="mp-hero__kicker">AI Calorie Tracker · 4.8★ on the App Store</p>
+      <h2>Snap your meal.<br>Kalo does the math.</h2>
+    </div>
+    <div class="mp-hero__phones mp-hero__phones--bare" aria-hidden="true">
+      <img class="p2" src="assets/cases/kalo/scan_cam.webp?v=1" alt="">
+      <img class="p1" src="assets/cases/kalo/scan_detail.webp?v=1" alt="">
+      <img class="p3" src="assets/cases/kalo/profile.webp?v=1" alt="">
+    </div>
+  </div>
+</section>
+
+<section class="cs-title wrap">
+  <a class="cs-back" href="case-studies.html">← All case studies</a>
+  <h1 class="grad">Kalo</h1>
+  <p>AI calorie tracker: take a photo of a meal and get calories, macros and a health score in seconds.</p>
+  <div class="cs-meta">
+    <div><span>Role</span><b>Senior Product Designer</b></div>
+    <div><span>Timeline</span><b>2025</b></div>
+    <div><span>Platform</span><b>iOS</b></div>
+    <div><span>Company</span><b>Oak Smart</b></div>
+  </div>
+</section>
+
+<section class="cs-summary wrap">
+  <h2 class="cs-label">Project summary &amp; challenges</h2>
+  <div class="cs-summary__txt">
+    <p>Kalo turns a photo of a meal into calories, carbs, protein and fat, adds a health score and small tips, and tracks progress toward a weight goal. It launched on the App Store in August 2025 and holds a 4.8★ rating.</p>
+    <h3 class="cs-sub">The challenge</h3>
+    <ul class="cs-list">
+      <li>Calorie tracking is tedious. Logging a meal had to take seconds, not a search through a food database.</li>
+      <li>A personal plan needs height, weight, goals and habits, without onboarding that feels like a form.</li>
+      <li>Most people stop tracking after a few days. The app had to give them reasons to come back.</li>
+    </ul>
+    <h3 class="cs-sub">My role</h3>
+    <ul class="cs-list">
+      <li>Designed the onboarding and the personal plan</li>
+      <li>Designed meal scanning and the meal detail screen</li>
+      <li>Designed the daily home, profile and goal progress</li>
+      <li>Designed the achievement badges, premium banners, paywall versions and system pop-ups</li>
+    </ul>
+    <p class="cs-note">Built together with Oak Smart’s product and engineering teams.</p>
+    <div class="chips"><span class="chip">Mobile app</span><span class="chip">AI product</span><span class="chip">Health</span><span class="chip">UX Design</span><span class="chip">UI Design</span><span class="chip">Gamification</span><span class="chip">Paywall</span></div>
+  </div>
+</section>
+
+<section class="cs-process wrap">
+  <h2>The process</h2>
+  <div class="cs-steps cs-steps--3">
+    <a class="cs-step" href="#onboarding"><b>#01</b><h3>Onboarding</h3><p>A personal plan in a few taps.</p><i>View ↓</i></a>
+    <a class="cs-step" href="#scan"><b>#02</b><h3>Snap a meal</h3><p>From photo to macros in seconds.</p><i>View ↓</i></a>
+    <a class="cs-step" href="#home"><b>#03</b><h3>Daily home</h3><p>Today’s calories, meals and water.</p><i>View ↓</i></a>
+    <a class="cs-step" href="#progress"><b>#04</b><h3>Progress &amp; badges</h3><p>Reasons to come back tomorrow.</p><i>View ↓</i></a>
+    <a class="cs-step" href="#premium"><b>#05</b><h3>Premium</h3><p>Banners and three paywall versions.</p><i>View ↓</i></a>
+    <a class="cs-step" href="#states"><b>#06</b><h3>States</h3><p>Offline, no purchase, update needed.</p><i>View ↓</i></a>
+  </div>
+</section>
+
+<div class="cs-strip" role="img" aria-label="Seven Kalo screens: welcome, height and weight, scan meal, meal detail, profile, goals question and nutrition intro."></div>
+
+<!-- #01 -->
+<section class="cs-sec wrap" id="onboarding">
+  <span class="cs-num">#01</span>
+  <h2 class="cs-h2">Onboarding</h2>
+  <div class="cs-txt">
+    <h3>A personal plan in a few taps</h3>
+    <p>Two welcome screens say what Kalo does: snap a meal, get the numbers. Then one question per screen with big tappable answers, and rulers instead of text fields for height, weight and target weight. A thin progress bar at the top shows how much is left.</p>
+  </div>
+  <h4 class="cs-sub">One question per screen</h4>
+  <div class="bares bares--5">
+    <figure class="bare"><img class="zoom" src="assets/cases/kalo/onb_welcome.webp?v=1" alt="Welcome: calorie tracking made easy" loading="lazy"><figcaption>Welcome</figcaption></figure>
+    <figure class="bare"><img class="zoom" src="assets/cases/kalo/onb_gender.webp?v=1" alt="Choose your gender" loading="lazy"><figcaption>Gender</figcaption></figure>
+    <figure class="bare"><img class="zoom" src="assets/cases/kalo/onb_height.webp?v=1" alt="Height and weight rulers" loading="lazy"><figcaption>Height &amp; weight</figcaption></figure>
+    <figure class="bare"><img class="zoom" src="assets/cases/kalo/onb_target.webp?v=1" alt="Target weight" loading="lazy"><figcaption>Target weight</figcaption></figure>
+    <figure class="bare"><img class="zoom" src="assets/cases/kalo/onb_stop.webp?v=1" alt="What is stopping you" loading="lazy"><figcaption>What’s stopping you</figcaption></figure>
+  </div>
+  <div class="cs-split cs-split--long">
+    <figure class="bare"><img class="zoom" src="assets/cases/kalo/onb_plan.webp?v=1" alt="Your custom plan is ready" loading="lazy"><figcaption>Your plan is ready</figcaption></figure>
+    <div class="cs-txt">
+      <h3>The answers turn into a plan</h3>
+      <p>The last screen pays off the questions: a daily calorie target, a split for carbs, protein and fat, a chart of the expected weight curve and a short list of how to get there, with the sources the plan is based on.</p>
+    </div>
+  </div>
+</section>
+
+<!-- #02 -->
+<section class="cs-sec cs-sec--alt" id="scan">
+  <div class="wrap">
+    <span class="cs-num">#02</span>
+    <h2 class="cs-h2">Snap a meal</h2>
+    <div class="cs-txt">
+      <h3>From photo to macros in seconds</h3>
+      <p>The camera opens straight into a frame for the plate, with a barcode mode one tap away. The meal page shows the photo, portion and calories first, then carbs, protein and fat as rings, a health score out of 10, and two small nudges: how long a walk burns it off, and a healthier alternative. Diet tags flag gluten, GMO, lactose and sugar.</p>
+    </div>
+    <h4 class="cs-sub">Camera to meal detail</h4>
+    <div class="bares bares--3 phones--flow">
+      <figure class="bare ph"><img class="zoom" src="assets/cases/kalo/scan_cam.webp?v=1" alt="Scan meal camera" loading="lazy"><figcaption>Scan the plate</figcaption></figure>
+      <figure class="bare ph"><img class="zoom" src="assets/cases/kalo/scan_detail.webp?v=1" alt="Meal detail with macros and health score" loading="lazy"><figcaption>Calories, macros, health score</figcaption></figure>
+      <figure class="bare ph"><img class="zoom" src="assets/cases/kalo/scan_detail2.webp?v=1" alt="Meal detail with diet tags" loading="lazy"><figcaption>With diet tags</figcaption></figure>
+    </div>
+    <div class="tag-strip"><img src="assets/cases/kalo/diet_tags.webp?v=1" alt="Diet tags: gluten free, GMO free, lactose free, sugar free" loading="lazy"></div>
+  </div>
+</section>
+
+<!-- #03 -->
+<section class="cs-sec wrap" id="home">
+  <div class="cs-split cs-split--long">
+    <figure class="bare"><img class="zoom" src="assets/cases/kalo/home.webp?v=1" alt="Kalo daily home" loading="lazy"><figcaption>Daily home</figcaption></figure>
+    <div class="cs-txt">
+      <span class="cs-num">#03</span>
+      <h2 class="cs-h2">Daily home</h2>
+      <h3>Today, at a glance</h3>
+      <p>Home starts with a week strip and one big number: calories left for today. Under it, carbs, protein and fat, then the day’s meals from breakfast to snacks, a water tracker filled one glass at a time, and the day’s activities. The scan button sits in the tab bar, always one tap away.</p>
+    </div>
+  </div>
+</section>
+
+<!-- #04 -->
+<section class="cs-sec cs-sec--alt" id="progress">
+  <div class="wrap">
+    <div class="cs-split cs-split--long">
+      <div class="cs-txt">
+        <span class="cs-num">#04</span>
+        <h2 class="cs-h2">Progress &amp; badges</h2>
+        <h3>Reasons to come back tomorrow</h3>
+        <p>The goal page shows the weight curve from the first day to the target, with today marked on it, and the daily calorie and macro targets. Profile keeps it short: what’s been lost so far, how far to the goal, then settings.</p>
+        <p>Badges reward the small wins, like the first kilo lost or a streak, from bronze and silver up to gold, and appear on the goal page as they are earned.</p>
+      </div>
+      <div class="bares bares--2">
+        <figure class="bare"><img class="zoom" src="assets/cases/kalo/goal.webp?v=1" alt="Your goal with weight chart and badges" loading="lazy"><figcaption>Goal &amp; weight chart</figcaption></figure>
+        <figure class="bare"><img class="zoom" src="assets/cases/kalo/profile.webp?v=1" alt="Profile" loading="lazy"><figcaption>Profile</figcaption></figure>
+      </div>
+    </div>
+    <h4 class="cs-sub">Achievement badges</h4>
+    <div class="badges">
+      <img src="assets/cases/kalo/badge_01.webp?v=1" alt="Badge" loading="lazy"><img src="assets/cases/kalo/badge_02.webp?v=1" alt="Badge" loading="lazy"><img src="assets/cases/kalo/badge_4.webp?v=1" alt="Badge" loading="lazy"><img src="assets/cases/kalo/badge_5.webp?v=1" alt="Badge" loading="lazy"><img src="assets/cases/kalo/badge_6.webp?v=1" alt="Badge" loading="lazy">
+      <img src="assets/cases/kalo/badge_10.webp?v=1" alt="Iron badge" loading="lazy"><img src="assets/cases/kalo/badge_9.webp?v=1" alt="Bronze badge" loading="lazy"><img src="assets/cases/kalo/badge_8.webp?v=1" alt="Silver badge" loading="lazy"><img src="assets/cases/kalo/badge_7.webp?v=1" alt="Gold badge" loading="lazy"><img src="assets/cases/kalo/badge_03.webp?v=1" alt="Crown badge" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- #05 -->
+<section class="cs-sec wrap" id="premium">
+  <span class="cs-num">#05</span>
+  <h2 class="cs-h2">Premium</h2>
+  <div class="cs-txt">
+    <h3>Banners and three paywall versions</h3>
+    <p>Premium shows up as friendly banners in the app, with the avocado and broccoli mascots, and as a paywall that leads with the promise: smart calorie tracking, reminders and nutrition insights. The paywall came in three versions: two with the free trial off and a different highlight on the short plan, and one with the trial on, where the button becomes “Try for $0” and the price line spells out what happens after the free week.</p>
+  </div>
+  <h4 class="cs-sub">In-app banners</h4>
+  <div class="banners">
+    <img src="assets/cases/kalo/banner_avo.webp?v=1" alt="Try Premium for Free banner with avocado" loading="lazy">
+    <img src="assets/cases/kalo/banner_orange.webp?v=1" alt="Try Premium for Free banner, orange" loading="lazy">
+    <img src="assets/cases/kalo/banner_broc.webp?v=1" alt="Try Premium for Free banner with broccoli" loading="lazy">
+    <img src="assets/cases/kalo/banner_pro.webp?v=1" alt="Try Premium for Free banner with Pro badge" loading="lazy">
+  </div>
+  <h4 class="cs-sub">Paywall versions</h4>
+  <div class="phones phones--3 phones--narrow">
+    <figure class="ph"><div class="ph__f"><img class="zoom" src="assets/cases/kalo/pay1.jpg?v=1" alt="Paywall, trial off" loading="lazy"></div><figcaption>Trial off, dark highlight</figcaption></figure>
+    <figure class="ph"><div class="ph__f"><img class="zoom" src="assets/cases/kalo/pay2.jpg?v=1" alt="Paywall, trial off, soft highlight" loading="lazy"></div><figcaption>Trial off, soft highlight</figcaption></figure>
+    <figure class="ph"><div class="ph__f"><img class="zoom" src="assets/cases/kalo/pay3.jpg?v=1" alt="Paywall, trial on" loading="lazy"></div><figcaption>Trial on, “Try for $0”</figcaption></figure>
+  </div>
+</section>
+
+<!-- #06 -->
+<section class="cs-sec cs-sec--alt" id="states">
+  <div class="wrap">
+    <span class="cs-num">#06</span>
+    <h2 class="cs-h2">States</h2>
+    <div class="cs-txt">
+      <h3>When something goes wrong</h3>
+      <p>System messages use the same mascot and one clear action: try again when the connection drops, okay when no purchase is found to restore, update when the app is out of date.</p>
+    </div>
+    <div class="bares bares--3 bares--narrow">
+      <figure class="bare"><img class="zoom" src="assets/cases/kalo/pop_net.webp?v=1" alt="No internet connection" loading="lazy"><figcaption>No internet</figcaption></figure>
+      <figure class="bare"><img class="zoom" src="assets/cases/kalo/pop_sub.webp?v=1" alt="No premium subscription found" loading="lazy"><figcaption>No purchase found</figcaption></figure>
+      <figure class="bare"><img class="zoom" src="assets/cases/kalo/pop_update.webp?v=1" alt="Please update the app" loading="lazy"><figcaption>Update needed</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- impact -->
+<section class="cs-impact wrap">
+  <div class="pair"><div class="kicker">Live on the App Store since</div><div class="big grad">August 2025</div></div>
+  <div class="pair"><div class="kicker">A 4.8★ rating from</div><div class="big grad">4.4K ratings</div></div>
+  <div class="stores">
+    <a href="https://apps.apple.com/us/app/kalo-ai-calorie-tracking/id6746720072" target="_blank" rel="noopener">App Store ↗</a>
+  </div>
+  <small>App Store (US), November 2026. Figures for the whole app, built by the whole team.</small>
+</section>
+
+<section class="cs-back-sec wrap">
+  <div class="cs-card">
+    <span class="cs-sub" style="display:block">Looking back</span>
+    <h3>What worked, and what I’d try next</h3>
+    <p>Rulers and one-question screens made a long onboarding feel short, and the meal page answers the only question people have after a photo: how much was that? Next I’d bring the badges onto the home screen, where people look every day, instead of keeping them on the goal page.</p>
+  </div>
+</section>
+
+<section class="cs-more wrap">
+  <div class="cs-more__bar">
+    <h2>More work</h2>
+    <a class="btn btn--dark" href="case-studies.html">All case studies →</a>
+  </div>
+  <div class="cards">
+    <a class="card" href="bip.html">
+      <div class="card__img"><img src="assets/covers/bip.jpg?v=3" alt="BiP · Turkcell" loading="lazy"><span class="ribbon">100M+ downloads</span></div>
+      <div class="card__meta"><div class="card__logo"><img src="assets/covers/logo_bip.png?v=3" alt=""></div><div><h4>BiP · Turkcell</h4><p>2013–2015</p></div></div>
+      <p class="card__desc">Turkcell’s messaging super app: messaging, payment and gamification flows.</p>
+    </a>
+    <a class="card" href="mepic.html">
+      <div class="card__img"><img src="assets/covers/mepic.jpg?v=3" alt="MePic" loading="lazy"><span class="ribbon">5M+ downloads</span></div>
+      <div class="card__meta"><div class="card__logo"><img src="assets/covers/logo_mepic.png?v=3" alt=""></div><div><h4>MePic <span class="pill-private">Private</span></h4><p>2026</p></div></div>
+      <p class="card__desc">AI photo and video app: product UI and AI-assisted performance video ads.</p>
+    </a>
+    <a class="card" href="citizenchain.html">
+      <div class="card__img"><img src="assets/covers/citizenchain.jpg?v=3" alt="CitizenChain" loading="lazy"></div>
+      <div class="card__meta"><div class="card__logo"><img src="assets/covers/logo_citizenchain.png?v=3" alt=""></div><div><h4>CitizenChain</h4><p>2024–2025</p></div></div>
+      <p class="card__desc">Gamified app that rewards everyday sustainability and civic action.</p>
+    </a>
+  </div>
+</section>
+
+<div class="zbox" id="zbox" aria-hidden="true"><img alt=""></div>
+<script>
+(function(){const b=document.getElementById('zbox'),i=b.querySelector('img');
+document.querySelectorAll('img.zoom').forEach(el=>el.addEventListener('click',()=>{i.src=el.dataset.full||el.src;b.classList.add('on')}));
+b.addEventListener('click',()=>b.classList.remove('on'));
+document.addEventListener('keydown',e=>{if(e.key==='Escape')b.classList.remove('on')});})();
+</script>
+
+<footer class="site-footer" id="contact">
+  <div class="sf__inner">
+    <p class="sf__text">Want to work together? Reach me on LinkedIn or by email.</p>
+    <div class="sf__right">
+      <a class="sf__icon" href="https://www.linkedin.com/in/ismail-gunduz/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M8 10.5V16M8 7.8v.01M11.5 16v-5.5M11.5 13c0-1.6 1-2.6 2.3-2.6s2.2.9 2.2 2.6V16"/></svg></a>
+      <a class="sf__icon" href="mailto:ismailgunduz7@gmail.com" aria-label="Email ismailgunduz7@gmail.com"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m4 7.5 8 5.5 8-5.5"/></svg></a>
+      <span class="sf__dot" aria-hidden="true"></span>
+      <a class="sf__cta" href="mailto:ismailgunduz7@gmail.com">Get in touch</a>
+    </div>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="Back to top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button>
+<script>
+(function(){const b=document.getElementById('toTop');
+const f=()=>b.classList.toggle('on',window.scrollY>700);
+window.addEventListener('scroll',f,{passive:true});f();
+b.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));})();
+</script>
+</body>
+</html>

@@ -1,0 +1,606 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1440" id="vp">
+<script>/* phones get the mobile layout; tablets and desktops keep the 1440 design */if(Math.min(screen.width,screen.height)<768)document.getElementById('vp').setAttribute('content','width=device-width,initial-scale=1');</script>
+<title>BiP · Turkcell | Ismail Gunduz</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Anton&display=swap">
+<style>
+/* =====================================================================
+   CASE STUDY TEMPLATE (BiP is the reference page, 12 Nov 2026)
+   Order: hero → title + meta → summary & challenge → my role
+          → process index → full-bleed screen strip → #01…#NN sections
+          → impact (big type) → looking back → next case → footer
+   Reuse every .cs-* class on the other case pages; only content changes.
+   ===================================================================== */
+:root{
+  --bg:#0D1019; --bg-alt:#111521; --white:#FFFFFF; --muted:#ABABAB;
+  --blue:#4AB3FD; --grad:linear-gradient(108deg,#4AB3FD 0%,#87B2D6 100%);
+  --line:rgba(255,255,255,.12); --glass:rgba(255,255,255,.04); --glass-line:rgba(255,255,255,.08);
+  --text:rgba(255,255,255,.88);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{width:1440px;margin:0 auto;background:var(--bg);color:var(--white);font:400 18px/1.6 Inter,system-ui,-apple-system,"Segoe UI",sans-serif}
+a{color:inherit;text-decoration:none}
+.grad{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.wrap{padding:0 72px}
+.btn{display:inline-flex;align-items:center;gap:10px;height:54px;padding:0 24px;border-radius:100px;font-weight:700;font-size:18px}
+.btn--grad{background:var(--grad);color:#fff}
+.btn--sm{height:36px;padding:0 16px;font-size:13px}
+.btn--dark{height:40px;padding:0 18px;font-size:14px;background:var(--bg);border:1px solid var(--line)}
+
+/* header */
+header{position:absolute;top:0;left:0;width:max(100vw,1440px);height:64px;padding:0 20px;display:flex;align-items:center;justify-content:space-between;z-index:5}
+header nav{display:flex;gap:32px;font-size:14px;font-weight:600}
+header nav a:hover{color:var(--blue)}
+
+/* hero: full-bleed key visual (headline lives in the image) */
+.cs-hero{width:max(100vw,1440px);margin-left:min(0px,calc(720px - 50vw));aspect-ratio:2048/1260;background:#1B5E9A url("assets/cases/bip/hero4.jpg?v=4") center/cover no-repeat;background-image:image-set(url("assets/cases/bip/hero4.jpg?v=4") 1x,url("assets/cases/bip/hero4@2x.jpg?v=4") 2x)}
+
+/* title + meta */
+.cs-title{padding-top:72px}
+.cs-back{display:table;font-size:15px;color:var(--blue);margin-bottom:18px}
+.cs-title h1{font-size:64px;line-height:72px;font-weight:800;letter-spacing:-1.4px;display:inline-block}
+.cs-title p{font-size:22px;line-height:34px;margin-top:8px;color:rgba(255,255,255,.8)}
+.cs-meta{display:grid;grid-template-columns:repeat(4,1fr);margin-top:44px;border:1px solid var(--line);border-radius:20px}
+.cs-meta div{padding:22px 28px}
+.cs-meta div+div{border-left:1px solid var(--line)}
+.cs-meta span{display:block;font-size:12px;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.cs-meta b{font-size:18px;font-weight:600}
+
+/* summary & challenge: big uppercase label left, text right */
+.cs-summary{display:grid;grid-template-columns:400px 1fr;gap:72px;padding-top:110px}
+.cs-label{font-size:40px;line-height:46px;font-weight:800;text-transform:uppercase;letter-spacing:-.4px}
+.cs-summary__txt p{font-size:19px;line-height:31px;margin-bottom:18px;color:var(--text)}
+.cs-list{list-style:none;margin:6px 0 0}
+.cs-list li{position:relative;padding-left:22px;font-size:17px;line-height:27px;color:var(--text);margin-bottom:10px}
+.cs-list li:before{content:"";position:absolute;left:0;top:10px;width:8px;height:8px;border-radius:50%;background:var(--blue)}
+.cs-sub{font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--blue);margin:30px 0 14px}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+.chip{display:inline-flex;align-items:center;padding:8px 16px;border-radius:100px;font-size:14px;border:1px solid var(--glass-line);background:linear-gradient(137deg,#353442 -166%,#0D0E12 100%)}
+.cs-note{margin-top:22px;font-size:15px;line-height:24px;color:var(--muted)}
+
+/* process index: every card jumps to its section */
+.cs-process{padding-top:120px;padding-bottom:110px}
+.cs-process h2{text-align:center;font-size:32px;font-weight:800;text-transform:uppercase;margin-bottom:40px}
+.cs-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.cs-step{display:block;padding:26px 28px;border:1px solid var(--glass-line);border-radius:18px;background:var(--glass);transition:border-color .2s,background .2s,transform .2s}
+.cs-step:hover{border-color:rgba(74,179,253,.55);background:rgba(74,179,253,.06);transform:translateY(-2px)}
+.cs-step b{display:block;font-size:13px;font-weight:700;color:var(--blue);letter-spacing:1px}
+.cs-step h3{font-size:21px;line-height:28px;font-weight:800;margin:8px 0 6px;text-transform:uppercase}
+.cs-step p{font-size:15px;line-height:23px;color:rgba(255,255,255,.72)}
+.cs-step i{font-style:normal;display:inline-block;margin-top:12px;font-size:14px;font-weight:600;color:var(--blue)}
+
+/* full-bleed screen strip between intro and sections */
+.cs-strip{width:max(100vw,1440px);margin-left:min(0px,calc(720px - 50vw));aspect-ratio:2048/790;background:#1B6FB8 url("assets/cases/bip/strip.jpg?v=1") center/cover no-repeat;background-image:image-set(url("assets/cases/bip/strip.jpg?v=1") 1x,url("assets/cases/bip/strip@2x.jpg?v=1") 2x)}
+
+/* numbered sections (#01, #02 …) */
+.cs-sec{padding-top:120px;padding-bottom:40px;scroll-margin-top:24px}
+.cs-sec--alt{background:var(--bg-alt);padding-bottom:120px;margin-top:80px}
+.cs-sec--alt+.cs-sec--alt{margin-top:0}
+.cs-num{display:block;font-size:22px;font-weight:800;color:var(--blue);line-height:1}
+.cs-h2{font-size:48px;line-height:54px;font-weight:800;text-transform:uppercase;letter-spacing:-.6px;margin:6px 0 26px}
+.cs-txt{max-width:800px}
+.cs-txt h3{font-size:26px;line-height:34px;font-weight:700;margin-bottom:14px}
+.cs-txt p{font-size:18px;line-height:30px;margin-bottom:16px;color:var(--text)}
+.cs-result{display:inline-block;margin-top:6px;padding:12px 20px;border-radius:14px;background:rgba(74,179,253,.1);border:1px solid rgba(74,179,253,.35)}
+.cs-result b{color:var(--blue);font-size:22px}
+.cs-sec .cs-sub{margin:56px 0 18px;color:var(--muted)}
+.cs-split{display:grid;grid-template-columns:1.25fr 1fr;gap:72px;align-items:center}
+.cs-split--rev{grid-template-columns:1fr 1fr}
+
+/* small 9:16 flow steps, all the same size */
+.flow{display:flex;align-items:flex-start}
+.flow--grid{gap:24px}
+.st{margin:0;width:170px;flex:none}
+.st img{display:block;width:170px;height:302px;object-fit:cover;object-position:top;border-radius:14px;box-shadow:0 14px 30px rgba(0,0,0,.35)}
+.st figcaption{font-size:13px;line-height:18px;color:rgba(255,255,255,.7);margin-top:10px}
+.ar{flex:none;width:34px;text-align:center;padding-top:140px;color:var(--blue);font-size:16px}
+.lanes{display:grid;gap:22px}
+.lane{display:grid;grid-template-columns:230px 1fr;align-items:start;padding:22px 24px;border:1px solid var(--line);border-radius:20px}
+.lane__who{display:flex;flex-direction:column;gap:8px;padding-top:6px}
+.lane__who span{align-self:flex-start;font-size:13px;font-weight:600;padding:6px 12px;border-radius:999px;background:rgba(74,179,253,.12);color:#cfe9ff}
+.lane__steps{display:flex;align-items:flex-start}
+.lane .st,.lane .st img{width:200px}
+.lane .st img{height:356px}
+.lane .ar{padding-top:168px}
+
+/* long phones: one frame for every showcase screen */
+.phones{display:grid;gap:36px;align-items:start}
+.phones--3{grid-template-columns:repeat(3,1fr)}
+.phones--4{grid-template-columns:repeat(4,1fr)}
+.phones--5{grid-template-columns:repeat(5,1fr);gap:28px}
+.phones--flow .ph{position:relative}
+.phones--flow .ph:not(:last-child):after{content:"→";position:absolute;right:-27px;top:44%;color:var(--blue);font-size:18px}
+.ph{margin:0}
+.ph__f{border-radius:30px;padding:7px;background:#0b0d12;box-shadow:0 24px 50px rgba(0,0,0,.45),inset 0 0 0 1px rgba(255,255,255,.08)}
+.ph__f img{display:block;width:100%;aspect-ratio:1/2.165;object-fit:cover;object-position:top;border-radius:24px}
+.phones--5 .ph__f{border-radius:24px;padding:6px}
+.phones--5 .ph__f img{border-radius:19px}
+.ph figcaption{font-size:14px;line-height:20px;color:rgba(255,255,255,.7);margin-top:14px;text-align:center}
+
+/* widgets: spec board on white */
+.wg-board{background:#fff;border-radius:24px;padding:40px;display:grid;grid-template-columns:repeat(3,1fr);gap:36px 32px;align-items:end}
+.wg-board figure{margin:0;text-align:center}
+.wg-board img{display:block;margin:0 auto;max-width:100%;height:auto;border-radius:6px}
+.wg-board figcaption{font-size:13px;line-height:18px;color:#5B6070;margin-top:12px}
+.wg-board figcaption b{display:block;color:#1B1F2A;font-size:14px;margin-bottom:2px}
+.wg-small{display:flex;gap:18px;justify-content:center;align-items:end}
+
+.cs-split--wg{grid-template-columns:1fr 700px;align-items:start}
+.cs-split--wg .cs-txt{position:sticky;top:40px;padding-top:10px}
+.wg-kit{margin:0}
+.wg-kit img{display:block;width:100%;border-radius:20px}
+.cs-split--chat{grid-template-columns:300px 1fr;gap:96px;margin-bottom:10px}
+.cs-split--docs{grid-template-columns:1fr 560px;align-items:start;margin-top:64px}
+.phones--narrow{max-width:1000px}
+/* web: simple browser frame */
+.browsers{display:grid;grid-template-columns:repeat(2,1fr);gap:36px 32px;margin-top:48px}
+.br{margin:0}
+.br>img{display:block;width:100%;border-radius:0 0 14px 14px;box-shadow:0 24px 50px rgba(0,0,0,.4)}
+.br__bar{height:30px;background:#20242F;border-radius:14px 14px 0 0;display:flex;align-items:center;gap:7px;padding:0 14px}
+.br__bar i{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.18)}
+.br figcaption{font-size:14px;color:rgba(255,255,255,.7);margin-top:14px;text-align:center}
+
+/* design system + illustration */
+.cs-icons{background:#fff;border-radius:24px;padding:36px}
+.cs-icons img{display:block;width:100%}
+.tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.tl{margin:0}
+.tl img{display:block;width:100%;aspect-ratio:1;border-radius:20px}
+
+/* impact: big condensed type, store links */
+.cs-impact{padding:150px 0 40px;text-align:center}
+.cs-impact .kicker{font-size:26px;line-height:32px;font-weight:500;color:rgba(255,255,255,.8)}
+.cs-impact .big{display:inline-block;font-family:Anton,Impact,"Arial Narrow",sans-serif;font-size:132px;line-height:1.02;letter-spacing:.5px;text-transform:uppercase}
+.cs-impact .pair+.pair{margin-top:56px}
+.cs-impact .stores{display:flex;gap:12px;justify-content:center;margin-top:44px}
+.cs-impact .stores a{display:inline-flex;align-items:center;gap:8px;height:44px;padding:0 20px;border-radius:12px;border:1px solid var(--line);font-size:15px;font-weight:600;transition:border-color .2s}
+.cs-impact .stores a:hover{border-color:var(--blue)}
+.cs-impact small{display:block;margin-top:22px;font-size:14px;color:var(--muted)}
+
+/* looking back */
+.cs-card{max-width:900px;margin:0 auto;background:var(--glass);border:1px solid var(--glass-line);border-radius:20px;padding:40px 44px}
+.cs-card .cs-sub{margin-top:0}
+.cs-card h3{font-size:26px;line-height:34px;font-weight:800;margin-bottom:14px}
+.cs-card p{font-size:17px;line-height:28px;color:var(--text)}
+.cs-back-sec{padding-top:90px}
+
+/* more work: same cards as the homepage */
+.cs-more{padding-top:120px;padding-bottom:110px}
+.cs-more__bar{display:flex;justify-content:space-between;align-items:center;margin-bottom:36px}
+.cs-more__bar h2{font-size:40px;line-height:46px;font-weight:800;text-transform:uppercase}
+.cards{display:grid;grid-template-columns:repeat(3,412px);justify-content:space-between}
+.card{display:block}
+.card__img{position:relative;height:287px;border-radius:20px;overflow:hidden;background:#1A1D27}
+.card__img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease}
+.card:hover .card__img img{transform:scale(1.03)}
+.card__meta{display:flex;align-items:center;gap:15px;margin-top:20px}
+.card__logo{width:58px;height:58px;border-radius:50%;flex:none;overflow:hidden}
+.card__logo img{width:100%;height:100%;display:block}
+.card__meta h4{font-size:24px;font-weight:700;line-height:28px}
+.card__meta p{font-size:16px;color:var(--muted)}
+.card__desc{margin-top:12px;font-size:15px;line-height:22px;color:rgba(255,255,255,.7)}
+.pill-private{font-size:12px;color:var(--muted);border:1px solid var(--line);border-radius:100px;padding:1px 8px;margin-left:8px;vertical-align:middle;font-weight:400}
+.ribbon{position:absolute;top:48px;right:-68px;width:280px;padding:7px 0;transform:rotate(45deg);background:#E0302A;color:#fff;text-align:center;font-size:12px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;box-shadow:0 6px 16px rgba(0,0,0,.28);z-index:1;pointer-events:none}
+
+/* click-to-zoom */
+img.zoom{cursor:zoom-in}
+.zbox{position:fixed;inset:0;background:rgba(5,7,12,.92);display:none;align-items:center;justify-content:center;z-index:100;cursor:zoom-out}
+.zbox.on{display:flex}
+.zbox img{max-width:90vw;max-height:92vh;border-radius:18px}
+
+/* footer on every page */
+footer.site-footer{display:block;width:max(100vw,1440px);margin:0 0 0 min(0px,calc(720px - 50vw));padding:0;border-top:1px solid rgba(255,255,255,.08)}
+.sf__inner{width:1440px;margin:0 auto;padding:28px 36px 30px;display:flex;flex-direction:column;align-items:center;gap:18px;text-align:center}
+.sf__text{margin:0;font-size:15px;font-weight:400;letter-spacing:.1px;color:rgba(255,255,255,.6)}
+.sf__right{display:flex;align-items:center;gap:10px}
+footer.site-footer .sf__icon{display:flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,255,255,.14);color:rgba(255,255,255,.75);transition:color .2s,border-color .2s,background .2s}
+footer.site-footer .sf__icon:hover{color:#fff;border-color:rgba(74,179,253,.6);background:rgba(74,179,253,.08)}
+.sf__icon svg{width:18px;height:18px}
+.sf__dot{width:3px;height:3px;border-radius:50%;background:rgba(255,255,255,.3);margin:0 6px}
+footer.site-footer .sf__cta{color:#4AB3FD;font-size:15px;font-weight:500;letter-spacing:.1px;text-decoration:none;border-bottom:1px solid rgba(74,179,253,.4);padding-bottom:1px;transition:border-color .2s}
+footer.site-footer .sf__cta:hover{border-color:#4AB3FD}
+
+/* back-to-top: appears after scrolling, bottom right */
+.to-top{position:fixed;right:28px;bottom:28px;width:52px;height:52px;border-radius:50%;border:1px solid rgba(74,179,253,.45);background:rgba(13,16,25,.82);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:90;box-shadow:0 10px 30px rgba(0,0,0,.4);opacity:0;visibility:hidden;transform:translateY(12px);transition:opacity .25s,transform .25s,visibility .25s,background .2s,border-color .2s}
+.to-top.on{opacity:1;visibility:visible;transform:none}
+.to-top:hover{background:#4AB3FD;border-color:#4AB3FD}
+.to-top svg{width:22px;height:22px}
+/* ==================== MOBILE (phones · generated from _work/scripts/mobile/*.css) ==================== */
+@media (max-width:959px){
+/* shell: every page */
+body{width:auto;font-size:16px;overflow-x:hidden}
+.wrap{padding:0 20px}
+header{width:100%;height:56px;padding:0 16px}
+header nav{gap:16px;font-size:13px}
+header nav a:nth-child(3),header nav a:nth-child(4){display:none}
+header .btn--sm{height:32px;padding:0 12px;font-size:12px}
+footer.site-footer{width:auto;margin:0}
+.sf__inner{width:auto;padding:28px 20px 92px}
+.sf__text{font-size:14px}
+.to-top{right:16px;bottom:16px;width:46px;height:46px}
+.lightbox video{height:auto;width:92vw;max-height:82vh}
+.lightbox--wide video{width:96vw}
+.lightbox__close{top:12px;right:12px}
+.zbox img{max-width:96vw;max-height:88vh;border-radius:10px}
+.cards{grid-template-columns:1fr;gap:40px}
+.card__img{height:auto;aspect-ratio:412/287}
+.card__meta{gap:12px;margin-top:16px}
+.card__logo{width:48px;height:48px}
+.card__meta h4{font-size:20px;line-height:24px}
+.card__meta p{font-size:14px}
+.btn{height:48px;padding:0 20px;font-size:16px}
+.block{padding:40px 0 56px}
+.head{margin-bottom:28px}
+.head h2{font-size:20px;line-height:26px}
+.head .big{font-size:40px;line-height:46px;letter-spacing:-.8px}
+.head .btn{margin-top:20px}
+/* case study template */
+.cs-hero{width:100%;margin-left:0}
+.cs-hero:not(.cs-hero--d1){margin-top:56px}
+.cs-hero--d1:before{height:72px}
+.mp-hero{width:100%;margin-left:0;height:auto}
+.mp-hero__in{width:auto;height:auto;padding:104px 20px 0;flex-direction:column;align-items:flex-start}
+.mp-hero__txt{max-width:none}
+.mp-hero__kicker{font-size:15px;line-height:22px;margin-bottom:10px}
+.mp-hero h2{font-size:40px;line-height:46px;letter-spacing:-.8px}
+.mp-hero__phones{position:relative;right:auto;top:auto;width:750px;height:690px;zoom:.44;align-self:center;margin-top:90px}
+.cs-title{padding-top:44px}
+.cs-title h1{font-size:38px;line-height:44px;letter-spacing:-.8px}
+.cs-title p{font-size:17px;line-height:27px}
+.cs-meta{grid-template-columns:1fr 1fr;margin-top:28px;border-radius:16px}
+.cs-meta div{padding:16px 18px}
+.cs-meta div+div{border-left:0}
+.cs-meta div:nth-child(even){border-left:1px solid var(--line)}
+.cs-meta div:nth-child(n+3){border-top:1px solid var(--line)}
+.cs-meta span{font-size:11px}
+.cs-meta b{font-size:15px}
+.cs-summary{grid-template-columns:1fr;gap:14px;padding-top:56px}
+.cs-label{font-size:26px;line-height:30px}
+.cs-summary__txt p{font-size:16px;line-height:27px}
+.cs-list li{font-size:16px;line-height:25px}
+.cs-process{padding-top:64px;padding-bottom:56px}
+.cs-process h2{font-size:24px;margin-bottom:22px}
+.cs-steps,.cs-steps--3{grid-template-columns:1fr 1fr;gap:10px}
+.cs-step{padding:14px 14px 16px;border-radius:14px}
+.cs-step b{font-size:12px}
+.cs-step h3{font-size:14px;line-height:19px;margin:6px 0 0;overflow-wrap:break-word}
+.cs-step p,.cs-step i{display:none}
+.cs-strip{width:100%;margin-left:0;aspect-ratio:16/10}
+.cs-sec{padding-top:64px;padding-bottom:24px;scroll-margin-top:12px}
+.cs-sec--alt{padding-bottom:64px;margin-top:48px}
+.cs-num{font-size:18px}
+.cs-h2{font-size:30px;line-height:34px;letter-spacing:-.3px;margin:6px 0 18px;overflow-wrap:break-word}
+.cs-txt h3{font-size:20px;line-height:27px}
+.cs-txt p{font-size:16px;line-height:27px}
+.cs-sec .cs-sub{margin:36px 0 14px}
+.cs-split{grid-template-columns:1fr!important;gap:32px!important}
+.cs-split--long{margin-top:48px}
+.cs-split>.cs-txt{order:-1}
+.cs-split>.bare,.cs-split>.ph{width:min(72%,280px);margin:0 auto}
+.cs-split--wg .cs-txt{position:static}
+/* rows of screens become swipeable carousels */
+.flow,.lane__steps{overflow-x:auto;margin:0 -20px;padding:0 20px 10px;scrollbar-width:none}
+.flow::-webkit-scrollbar,.lane__steps::-webkit-scrollbar,.phones::-webkit-scrollbar,.bares::-webkit-scrollbar,.mloops::-webkit-scrollbar{display:none}
+.st,.st img{width:150px}
+.st img{height:267px}
+.ar{width:26px;padding-top:120px}
+.lane{grid-template-columns:1fr;gap:14px;padding:18px 16px}
+.lane__who{flex-direction:row;flex-wrap:wrap}
+.lane .st,.lane .st img{width:150px}
+.lane .st img{height:267px}
+.lane .ar{padding-top:120px}
+.phones,.bares--5,.bares--3,.mloops{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:24px!important;margin-left:-20px;margin-right:-20px;padding:0 20px 14px;max-width:none!important;scrollbar-width:none}
+.phones>.ph,.bares>.bare,.mloops>figure{flex:0 0 min(62%,260px);scroll-snap-align:center}
+.phones--flow .ph:not(:last-child):after{right:-19px;font-size:15px}
+.ph__f{border-radius:26px;padding:6px}
+.ph__f img{border-radius:21px}
+.ph figcaption,.bare figcaption{font-size:13px;line-height:18px;margin-top:10px}
+.bares--2,.banners{grid-template-columns:1fr 1fr;gap:16px}
+.badges{grid-template-columns:repeat(3,1fr);gap:14px 18px}
+.vgrid{grid-template-columns:repeat(2,1fr);gap:24px 14px;margin-top:32px}
+.vcard h4{font-size:15px}
+.browsers{grid-template-columns:1fr;gap:28px;margin-top:32px}
+.br__bar{height:22px;padding:0 10px;gap:5px;border-radius:10px 10px 0 0}
+.br__bar i{width:7px;height:7px}
+.br>img,.br>video{border-radius:0 0 10px 10px}
+.br figcaption{font-size:13px}
+.tiles{grid-template-columns:repeat(2,1fr);gap:14px}
+.wg-board{grid-template-columns:1fr;padding:20px}
+.cs-icons{padding:14px;border-radius:16px}
+.wg-kit img{border-radius:14px}
+.board{margin-top:28px;border-radius:14px}
+.personas{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:16px;margin:32px -20px 0;padding:0 20px 12px;scrollbar-width:none}
+.personas>figure{flex:0 0 78%;scroll-snap-align:center}
+.findings{grid-template-columns:1fr;gap:16px}
+.findings .cs-card{padding:22px 20px}
+.loop,.proto{max-width:280px;margin-left:auto;margin-right:auto}
+.scrollshot{height:520px}
+.icon-final{width:150px;height:150px;border-radius:34px}
+.commits code{font-size:12px;line-height:18px;overflow-wrap:anywhere}
+.tag-strip{margin-top:28px}
+.cs-impact{padding:80px 0 24px}
+.cs-impact .kicker{font-size:18px;line-height:24px}
+.cs-impact .big{font-size:min(12.5vw,96px)}
+.cs-impact .pair+.pair{margin-top:36px}
+.cs-impact .stores{flex-wrap:wrap;margin-top:32px}
+.cs-back-sec{padding-top:56px}
+.cs-card{padding:24px 20px;border-radius:16px}
+.cs-card h3{font-size:21px;line-height:28px}
+.cs-card p{font-size:16px;line-height:26px}
+.cs-more{padding-top:64px;padding-bottom:56px}
+.cs-more__bar{flex-wrap:wrap;gap:14px;margin-bottom:24px}
+.cs-more__bar h2{font-size:26px;line-height:30px}
+}
+/* ==================== /MOBILE ==================== */
+</style>
+</head>
+<body>
+
+<header>
+  <nav><a href="index.html">Home</a><a href="case-studies.html">Case Studies</a><a href="index.html#how">How I Work</a><a href="index.html#experience">Experience</a><a href="#contact">Contact</a></nav>
+  <a class="btn btn--grad btn--sm" href="assets/Ismail_Gunduz_CV.pdf" target="_blank" rel="noopener">View Résumé</a>
+</header>
+
+<div class="cs-hero" role="img" aria-label="Super app design, 100M+ downloads. From messaging to payment, one app. A hand holds BiP open on the Discover screen, surrounded by 3D icons for messaging, calls, video, status, media, transfers, QR payments, bills, crypto, games, Discover and emergency."></div>
+
+<section class="cs-title wrap">
+  <a class="cs-back" href="case-studies.html">← All case studies</a>
+  <h1 class="grad">BiP · Turkcell</h1>
+  <p>Turkcell’s messaging super app: chats, calls, payments, crypto and services in one place.</p>
+  <div class="cs-meta">
+    <div><span>Role</span><b>Product Designer</b></div>
+    <div><span>Timeline</span><b>2013 – 2015</b></div>
+    <div><span>Platform</span><b>iOS · Android</b></div>
+    <div><span>Company</span><b>Turkcell</b></div>
+  </div>
+</section>
+
+<section class="cs-summary wrap">
+  <h2 class="cs-label">Project summary &amp; challenges</h2>
+  <div class="cs-summary__txt">
+    <p>BiP is Turkcell’s messaging app. It launched in 2013 and has passed 100 million downloads. Over time it grew from chats and calls into a super app with a wallet, a crypto exchange, third-party services and games. All of this was built by a large team of designers, product managers and engineers at Turkcell; this page shows the parts I worked on with them.</p>
+    <h3 class="cs-sub">The challenge</h3>
+    <ul class="cs-list">
+      <li>Add payments, crypto, services and games without making messaging, the reason people open the app, feel heavier.</li>
+      <li>Serve very different users with one flow: Turkcell and other operators, new and existing Paycell users, Wi-Fi and mobile data.</li>
+      <li>Keep features built by different teams looking like one app.</li>
+    </ul>
+    <h3 class="cs-sub">My role</h3>
+    <ul class="cs-list">
+      <li>Designed screens and flows for onboarding, payments, messaging, status and the widget kit, including empty, loading and error states</li>
+      <li>Worked on the team that created BiP’s atomic design system, and drew icons for it</li>
+      <li>Made illustrations, in-app visuals and marketing material</li>
+    </ul>
+    <p class="cs-note">A team effort: the screens on this page come from several BiP releases. I designed some of them end to end and contributed to others as part of the BiP design team.</p>
+    <div class="chips"><span class="chip">Mobile app</span><span class="chip">UX Design</span><span class="chip">UI Design</span><span class="chip">Payments</span><span class="chip">Fintech</span><span class="chip">Design system</span><span class="chip">Illustration</span></div>
+  </div>
+</section>
+
+<section class="cs-process wrap">
+  <h2>The process</h2>
+  <div class="cs-steps">
+    <a class="cs-step" href="#onboarding"><b>#01</b><h3>Onboarding</h3><p>A short intro, then the check that fits.</p><i>View ↓</i></a>
+    <a class="cs-step" href="#payments"><b>#02</b><h3>Payments</h3><p>A wallet one tap away from the chats.</p><i>View ↓</i></a>
+    <a class="cs-step" href="#digital-assets"><b>#03</b><h3>Digital assets</h3><p>Buying and selling crypto inside a messenger.</p><i>View ↓</i></a>
+    <a class="cs-step" href="#widgets"><b>#04</b><h3>Widgets</h3><p>A shared kit every team could build with.</p><i>View ↓</i></a>
+    <a class="cs-step" href="#status"><b>#05</b><h3>Messaging &amp; Status</h3><p>Chats, replies and 24-hour updates.</p><i>View ↓</i></a>
+    <a class="cs-step" href="#discover"><b>#06</b><h3>Discover</h3><p>Services picked by interest.</p><i>View ↓</i></a>
+    <a class="cs-step" href="#console"><b>#07</b><h3>Developer console</h3><p>Sign-up and docs for businesses on the web.</p><i>View ↓</i></a>
+    <a class="cs-step" href="#system"><b>#08</b><h3>Design system</h3><p>Atomic system, icons and illustration.</p><i>View ↓</i></a>
+  </div>
+</section>
+
+<div class="cs-strip" role="img" aria-label="BiP screens side by side: digital asset welcome and asset list, Paycell wallet, Discover home and a chat."></div>
+
+<!-- #01 -->
+<section class="cs-sec wrap" id="onboarding">
+  <div class="cs-split cs-split--rev">
+    <div class="cs-txt">
+      <span class="cs-num">#01</span>
+      <h2 class="cs-h2">Onboarding</h2>
+      <h3>Four screens, then you’re in</h3>
+      <p>Paycell inside BiP had to work for Turkcell and other operators, for new and existing Paycell users, on Wi-Fi and on mobile data. The flow became one path that branches only where it has to: a short intro, the phone number, then the check that fits each user.</p>
+    </div>
+    <div class="flow flow--grid"><figure class="st"><img class="zoom" src="assets/cases/bip/f_in1.jpg?v=2" alt="Welcome" loading="lazy"><figcaption>Welcome</figcaption></figure><figure class="st"><img class="zoom" src="assets/cases/bip/f_in2.jpg?v=2" alt="What you can do" loading="lazy"><figcaption>What you can do</figcaption></figure><figure class="st"><img class="zoom" src="assets/cases/bip/f_in3.jpg?v=2" alt="Pay with QR" loading="lazy"><figcaption>Pay with QR</figcaption></figure></div>
+  </div>
+</section>
+
+<!-- #02 -->
+<section class="cs-sec cs-sec--alt" id="payments">
+  <div class="wrap cs-split">
+    <div class="phones phones--3"><figure class="ph"><div class="ph__f"><img class="zoom" src="assets/cases/bip/L_more.jpg?v=2" alt="More menu: Paycell next to chats and calls" loading="lazy"></div><figcaption>More menu: Paycell next to chats and calls</figcaption></figure><figure class="ph"><div class="ph__f"><img class="zoom" src="assets/cases/bip/L_pay_closed.jpg?v=2" alt="Paycell home, balances collapsed" loading="lazy"></div><figcaption>Balances collapsed</figcaption></figure><figure class="ph"><div class="ph__f"><img class="zoom" src="assets/cases/bip/pay_home.jpg?v=1" alt="Paycell home with balances expanded, quick actions and offers" loading="lazy"></div><figcaption>Balances expanded, offers below</figcaption></figure></div>
+    <div class="cs-txt">
+      <span class="cs-num">#02</span>
+      <h2 class="cs-h2">Payments</h2>
+      <h3>A wallet inside a messenger</h3>
+      <p>Paycell lives in BiP’s More menu, next to calls, contacts and settings, so it’s one tap away without crowding the chat tabs.</p>
+      <p>The Paycell home leads with the balance and the three most common actions: top up, pay by QR and send money. Tapping the balance opens an accordion that splits it into card balance and credit limit, so the detail is there when people want it and out of the way when they don’t. Bills, gift cards and offers sit below.</p>
+    </div>
+  </div>
+</section>
+
+<!-- #03 -->
+<section class="cs-sec wrap" id="digital-assets">
+  <span class="cs-num">#03</span>
+  <h2 class="cs-h2">Digital assets</h2>
+  <div class="cs-txt">
+    <h3>Crypto that feels like the rest of BiP</h3>
+    <p>Digital Assets lets BiP users buy, sell and hold crypto, with Colendi running the exchange behind it. Most people opening it had never bought crypto, so the screens borrow what they already knew from Paycell: the same balance card, the same four round actions (buy, sell, add money, withdraw) and the same bottom sheets.</p>
+    <p>Four intro screens with 3D icons explain the product before sign-up. Buying is three steps in a bottom sheet over the wallet: pick an asset, enter an amount or tap 25 / 50 / 75 / 100% of the balance, check the summary. Identity checks, withdrawals and a searchable FAQ follow the same pattern.</p>
+  </div>
+
+  <h4 class="cs-sub">Intro</h4>
+  <div class="phones phones--4"><figure class="ph"><div class="ph__f"><img class="zoom" src="assets/cases/bip/da_intro1.jpg?v=1" alt="Welcome to Digital Assets" loading="lazy"></div><figcaption>Welcome</figcaption></figure><figure class="ph"><div class="ph__f"><img class="zoom" src="assets/cases/bip/da_intro2.jpg?v=1" alt="Easy to understand" loading="lazy"></div><figcaption>Easy to understand</figcaption></figure><figure class="ph"><div class="ph__f"><img class="zoom" src="assets/cases/bip/da_intro3.jpg?v=1" alt="Fast and accessible" loading="lazy"></div><figcaption>Fast and accessible</figcaption></figure><figure class="ph"><div class="ph__f"><img class="zoom" src="assets/cases/bip/da_intro4.jpg?v=1" alt="Get started" loading="lazy"></div><figcaption>Get started</figcaption></figure></div>
+
+  <h4 class="cs-sub">Buy in three steps</h4>
+  <div class="phones phones--4 phones--flow"><figure class="ph"><div class="ph__f"><img class="zoom" src="assets/cases/bip/da_pick.jpg?v=1" alt="Pick an asset" loading="lazy"></div><figcaption>Pick an asset</figcaption></figure><figure class="ph"><div class="ph__f"><img class="zoom" src="assets/cases/bip/da_amount.jpg?v=1" alt="Enter an amount or a share of the balance" loading="lazy"></div><figcaption>Amount, or 25–100% of the balance</figcaption></figure><figure class="ph"><div class="ph__f"><img class="zoom" src="assets/cases/bip/da_summary.jpg?v=1" alt="Order summary" loading="lazy"></div><figcaption>Summary</figcaption></figure><figure class="ph"><div class="ph__f"><img class="zoom" src="assets/cases/bip/da_done.jpg?v=1" alt="Purchase complete" loading="lazy"></div><figcaption>Done</figcaption></figure></div>
+
+  <h4 class="cs-sub">Wallet, portfolio and history</h4>
+  <div class="phones phones--4"><figure class="ph"><div class="ph__f"><img class="zoom" src="assets/cases/bip/da_welcome.jpg?v=1" alt="Welcome card and market prices" loading="lazy"></div><figcaption>Before sign-up: market prices</figcaption></figure><figure class="ph"><div class="ph__f"><img class="zoom" src="assets/cases/bip/da_wallet.jpg?v=1" alt="Wallet home" loading="lazy"></div><figcaption>Wallet home</figcaption></figure><figure class="ph"><div class="ph__f"><img class="zoom" src="assets/cases/bip/da_portfolio.jpg?v=1" alt="Portfolio" loading="lazy"></div><figcaption>Portfolio</figcaption></figure><figure class="ph"><div class="ph__f"><img class="zoom" src="assets/cases/bip/da_history.jpg?v=1" alt="Transaction history" loading="lazy"></div><figcaption>Transaction history</figcaption></figure></div>
+
+  <h4 class="cs-sub">Identity check, withdrawals and help</h4>
+  <div class="phones phones--5"><figure class="ph"><div class="ph__f"><img class="zoom" src="assets/cases/bip/da_kyc1.jpg?v=1" alt="What the ID check needs" loading="lazy"></div><figcaption>What the ID check needs</figcaption></figure><figure class="ph"><div class="ph__f"><img class="zoom" src="assets/cases/bip/da_kyc2.jpg?v=1" alt="Photo with ID" loading="lazy"></div><figcaption>Photo with ID</figcaption></figure><figure class="ph"><div class="ph__f"><img class="zoom" src="assets/cases/bip/da_kyc3.jpg?v=1" alt="ID received" loading="lazy"></div><figcaption>Received</figcaption></figure><figure class="ph"><div class="ph__f"><img class="zoom" src="assets/cases/bip/da_cash1.jpg?v=1" alt="Withdraw to IBAN" loading="lazy"></div><figcaption>Withdraw to IBAN</figcaption></figure><figure class="ph"><div class="ph__f"><img class="zoom" src="assets/cases/bip/da_faq.jpg?v=1" alt="Searchable FAQ" loading="lazy"></div><figcaption>Searchable FAQ</figcaption></figure></div>
+</section>
+
+<!-- #04 -->
+<section class="cs-sec cs-sec--alt" id="widgets">
+  <div class="wrap cs-split cs-split--wg">
+    <div class="cs-txt">
+      <span class="cs-num">#04</span>
+      <h2 class="cs-h2">Widgets</h2>
+      <h3>A kit of widgets for every team</h3>
+      <p>Services inside BiP were built by many teams, so we kept a shared kit of widgets on top of the design system: service rows with ratings and follow buttons, file cards, a weather card, campaign banners, a category grid for Discover, alerts for every state, a calendar, navigation and breadcrumbs, member lists, forms and buttons.</p>
+      <p>Every widget comes in BiP’s blue with the same radius, spacing and type, so a new service could be put together from parts that already matched the rest of the app.</p>
+    </div>
+    <figure class="wg-kit"><img class="zoom" src="assets/cases/bip/widgets_board.jpg?v=1" data-full="assets/cases/bip/widgets_board@full.jpg?v=1" alt="BiP widget kit: service row, file card, weather, banners, category grid, alerts, calendar, navigation, breadcrumbs, team list, buttons and forms" loading="lazy"></figure>
+  </div>
+</section>
+
+<!-- #05 -->
+<section class="cs-sec wrap" id="status">
+  <div class="cs-split cs-split--chat">
+    <figure class="ph"><div class="ph__f"><img class="zoom" src="assets/cases/bip/msg_chat.jpg?v=1" alt="A BiP chat with replies and quoted messages" loading="lazy"></div><figcaption>Chat with quoted replies</figcaption></figure>
+    <div class="cs-txt">
+      <span class="cs-num">#05</span>
+      <h2 class="cs-h2">Messaging &amp; Status</h2>
+      <h3>The reason people open the app</h3>
+      <p>Chats stay clean: bubbles, quoted replies and read receipts, with calls one tap away in the header. Status lets people share a photo, video or text for 24 hours, add text, stickers and drawings, see who viewed it, and reply so the answer lands in the chat.</p>
+    </div>
+  </div>
+  <h4 class="cs-sub">Sharing a status</h4>
+  <div class="flow"><figure class="st"><img class="zoom" src="assets/cases/bip/f_s1.jpg?v=2" alt="Status list" loading="lazy"><figcaption>Status list</figcaption></figure><span class="ar" aria-hidden="true">→</span><figure class="st"><img class="zoom" src="assets/cases/bip/f_s2.jpg?v=2" alt="Camera" loading="lazy"><figcaption>Camera</figcaption></figure><span class="ar" aria-hidden="true">→</span><figure class="st"><img class="zoom" src="assets/cases/bip/f_s3.jpg?v=2" alt="Add text" loading="lazy"><figcaption>Add text</figcaption></figure><span class="ar" aria-hidden="true">→</span><figure class="st"><img class="zoom" src="assets/cases/bip/f_s4.jpg?v=2" alt="Stickers" loading="lazy"><figcaption>Stickers</figcaption></figure><span class="ar" aria-hidden="true">→</span><figure class="st"><img class="zoom" src="assets/cases/bip/f_s5.jpg?v=2" alt="Drawing" loading="lazy"><figcaption>Drawing</figcaption></figure><span class="ar" aria-hidden="true">→</span><figure class="st"><img class="zoom" src="assets/cases/bip/f_s6.jpg?v=2" alt="Text status" loading="lazy"><figcaption>Text status</figcaption></figure></div>
+</section>
+
+<!-- #06 -->
+<section class="cs-sec cs-sec--alt wrap" id="discover">
+  <span class="cs-num">#06</span>
+  <h2 class="cs-h2">Discover</h2>
+  <div class="cs-txt">
+    <h3>Services inside BiP</h3>
+    <p>Discover brings news and third-party services into the app. New users pick at least three interests, the home fills with matching services, and every service has its own page to follow, rate and review.</p>
+  </div>
+  <h4 class="cs-sub">Pick, browse, follow</h4>
+  <div class="phones phones--3 phones--narrow"><figure class="ph"><div class="ph__f"><img class="zoom" src="assets/cases/bip/L_disc_pick.jpg?v=2" alt="Pick your interests" loading="lazy"></div><figcaption>Pick your interests</figcaption></figure><figure class="ph"><div class="ph__f"><img class="zoom" src="assets/cases/bip/L_disc_home.jpg?v=2" alt="Personal Discover home" loading="lazy"></div><figcaption>Personal Discover home</figcaption></figure><figure class="ph"><div class="ph__f"><img class="zoom" src="assets/cases/bip/L_disc_detail.jpg?v=2" alt="Service page" loading="lazy"></div><figcaption>Service page</figcaption></figure></div>
+</section>
+
+<!-- #07 -->
+<section class="cs-sec wrap" id="console">
+  <span class="cs-num">#07</span>
+  <h2 class="cs-h2">Developer console</h2>
+  <div class="cs-txt">
+    <h3>BiP for businesses, on the web</h3>
+    <p>Companies and developers use BiP’s web console to reach customers through the app. Sign-up starts with one choice, individual or corporate, then a single form that asks only what that account needs: country, contact details and what they plan to use BiP for. A six-digit code confirms the account. The developer site sits next to it with documentation for payments, messaging and business apps.</p>
+  </div>
+  <div class="browsers">
+    <figure class="br"><div class="br__bar"><i></i><i></i><i></i></div><img class="zoom" src="assets/cases/bip/web_login.jpg?v=1" alt="Console sign-in" loading="lazy"><figcaption>Sign in</figcaption></figure>
+    <figure class="br"><div class="br__bar"><i></i><i></i><i></i></div><img class="zoom" src="assets/cases/bip/web_type.jpg?v=1" alt="Choose individual or corporate account" loading="lazy"><figcaption>Individual or corporate</figcaption></figure>
+    <figure class="br"><div class="br__bar"><i></i><i></i><i></i></div><img class="zoom" src="assets/cases/bip/web_purpose.jpg?v=1" alt="Sign-up form with purpose of use" loading="lazy"><figcaption>One form, with purpose of use</figcaption></figure>
+    <figure class="br"><div class="br__bar"><i></i><i></i><i></i></div><img class="zoom" src="assets/cases/bip/web_code.jpg?v=1" alt="Six-digit confirmation code" loading="lazy"><figcaption>Confirm with a code</figcaption></figure>
+  </div>
+  <div class="cs-split cs-split--docs">
+    <div class="cs-txt">
+      <h4 class="cs-sub" style="margin-top:0">Developer site</h4>
+      <p>The documentation home groups the APIs by what a business wants to do: take payments in an app, talk to customers, manage messages and build business apps, each with a short card and its own page.</p>
+    </div>
+    <figure class="br"><div class="br__bar"><i></i><i></i><i></i></div><img class="zoom" src="assets/cases/bip/web_docs.jpg?v=1" alt="BiP developer site, Documents page" loading="lazy"><figcaption>Documentation home</figcaption></figure>
+  </div>
+</section>
+
+<!-- #08 -->
+<section class="cs-sec cs-sec--alt" id="system">
+  <div class="wrap">
+    <div class="cs-split cs-split--rev">
+      <div class="cs-txt">
+        <span class="cs-num">#08</span>
+        <h2 class="cs-h2">Design system</h2>
+        <h3>An atomic design system, one icon language</h3>
+        <p>As BiP grew, the team created an atomic design system: shared atoms such as colours, type and icons, built up into components and full screens, so every team could ship features that look like one app. I worked on it and drew icons for it. The icon set uses one stroke weight, rounded ends and the same corner radius across messaging, calls, media editing and payments.</p>
+      </div>
+      <div class="cs-icons"><img class="zoom" src="assets/cases/bip/icons_crop.png" alt="BiP icon set" loading="lazy"></div>
+    </div>
+    <div class="cs-txt" style="margin-top:90px">
+      <h3>Two illustration styles, one blue</h3>
+      <p>Paycell’s intro uses a pixel style built from dots, matching the payment brand. Discover uses light line drawings with blue fills for its onboarding. Both stay in BiP’s blue so they sit naturally in the same app.</p>
+    </div>
+    <h4 class="cs-sub">Paycell intro</h4>
+    <div class="tiles"><figure class="tl"><img class="zoom" src="assets/cases/bip/t_px1.jpg?v=2" alt="Paycell pixel illustration" loading="lazy"></figure><figure class="tl"><img class="zoom" src="assets/cases/bip/t_px2.jpg?v=2" alt="Paycell pixel illustration" loading="lazy"></figure><figure class="tl"><img class="zoom" src="assets/cases/bip/t_px3.jpg?v=2" alt="Paycell pixel illustration" loading="lazy"></figure><figure class="tl"><img class="zoom" src="assets/cases/bip/t_px4.jpg?v=2" alt="Paycell pixel illustration" loading="lazy"></figure></div>
+    <h4 class="cs-sub">Discover onboarding</h4>
+    <div class="tiles"><figure class="tl"><img class="zoom" src="assets/cases/bip/t_ln1.jpg?v=2" alt="Discover line illustration" loading="lazy"></figure><figure class="tl"><img class="zoom" src="assets/cases/bip/t_ln2.jpg?v=2" alt="Discover line illustration" loading="lazy"></figure><figure class="tl"><img class="zoom" src="assets/cases/bip/t_ln3.jpg?v=2" alt="Discover line illustration" loading="lazy"></figure><figure class="tl"><img class="zoom" src="assets/cases/bip/t_ln4.jpg?v=2" alt="Discover line illustration" loading="lazy"></figure></div>
+  </div>
+</section>
+
+<!-- impact -->
+<section class="cs-impact wrap">
+  <div class="pair"><div class="kicker">More than</div><div class="big grad">100M+ downloads</div></div>
+  <div class="pair"><div class="kicker">A 4.6★ rating from</div><div class="big grad">1.32M reviews</div></div>
+  <div class="stores">
+    <a href="https://play.google.com/store/apps/details?id=com.turkcell.bip" target="_blank" rel="noopener">Google Play ↗</a>
+    <a href="https://apps.apple.com/tr/app/bip-messenger-video-call/id583274826" target="_blank" rel="noopener">App Store ↗</a>
+  </div>
+  <small>Google Play, November 2026. Figures for the whole app, the result of many teams’ work over the years.</small>
+</section>
+
+<section class="cs-back-sec wrap">
+  <div class="cs-card">
+    <span class="cs-sub" style="display:block">Looking back</span>
+    <h3>What still holds up, and what I’d change</h3>
+    <p>Some of these screens show their age: the type is small and the cards are busy. The structure still holds up: payments one tap from the chats, crypto built on the same patterns as the wallet, and a shared widget kit that kept many teams’ work looking like one app. Today I’d test flows with real users before polishing the screens, and I’d give the home fewer things to say.</p>
+  </div>
+</section>
+
+<section class="cs-more wrap">
+  <div class="cs-more__bar">
+    <h2>More work</h2>
+    <a class="btn btn--dark" href="case-studies.html">All case studies →</a>
+  </div>
+  <div class="cards">
+    <a class="card" href="mepic.html">
+      <div class="card__img"><img src="assets/covers/mepic.jpg?v=3" alt="MePic" loading="lazy"><span class="ribbon">5M+ downloads</span></div>
+      <div class="card__meta"><div class="card__logo"><img src="assets/covers/logo_mepic.png?v=3" alt=""></div><div><h4>MePic <span class="pill-private">Private</span></h4><p>2026</p></div></div>
+      <p class="card__desc">AI photo and video app: product UI and AI-assisted performance video ads.</p>
+    </a>
+    <a class="card" href="kalo.html">
+      <div class="card__img"><img src="assets/covers/kalo.jpg?v=3" alt="Kalo" loading="lazy"><span class="ribbon">4.8 ★ App Store</span></div>
+      <div class="card__meta"><div class="card__logo"><img src="assets/covers/logo_kalo.png?v=3" alt=""></div><div><h4>Kalo</h4><p>2025</p></div></div>
+      <p class="card__desc">AI calorie tracker: snap, scan or speak a meal to log it in seconds.</p>
+    </a>
+    <a class="card" href="citizenchain.html">
+      <div class="card__img"><img src="assets/covers/citizenchain.jpg?v=3" alt="CitizenChain" loading="lazy"></div>
+      <div class="card__meta"><div class="card__logo"><img src="assets/covers/logo_citizenchain.png?v=3" alt=""></div><div><h4>CitizenChain</h4><p>2024–2025</p></div></div>
+      <p class="card__desc">Gamified app that rewards everyday sustainability and civic action.</p>
+    </a>
+  </div>
+</section>
+
+<div class="zbox" id="zbox" aria-hidden="true"><img alt=""></div>
+<script>
+(function(){const b=document.getElementById('zbox'),i=b.querySelector('img');
+document.querySelectorAll('img.zoom').forEach(el=>el.addEventListener('click',()=>{i.src=el.dataset.full||el.src;b.classList.add('on')}));
+b.addEventListener('click',()=>b.classList.remove('on'));
+document.addEventListener('keydown',e=>{if(e.key==='Escape')b.classList.remove('on')});})();
+</script>
+
+<footer class="site-footer" id="contact">
+  <div class="sf__inner">
+    <p class="sf__text">Want to work together? Reach me on LinkedIn or by email.</p>
+    <div class="sf__right">
+      <a class="sf__icon" href="https://www.linkedin.com/in/ismail-gunduz/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M8 10.5V16M8 7.8v.01M11.5 16v-5.5M11.5 13c0-1.6 1-2.6 2.3-2.6s2.2.9 2.2 2.6V16"/></svg></a>
+      <a class="sf__icon" href="mailto:ismailgunduz7@gmail.com" aria-label="Email ismailgunduz7@gmail.com"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m4 7.5 8 5.5 8-5.5"/></svg></a>
+      <span class="sf__dot" aria-hidden="true"></span>
+      <a class="sf__cta" href="mailto:ismailgunduz7@gmail.com">Get in touch</a>
+    </div>
+  </div>
+</footer>
+<button class="to-top" id="toTop" type="button" aria-label="Back to top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button>
+<script>
+(function(){const b=document.getElementById('toTop');
+const f=()=>b.classList.toggle('on',window.scrollY>700);
+window.addEventListener('scroll',f,{passive:true});f();
+b.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));})();
+</script>
+</body>
+</html>

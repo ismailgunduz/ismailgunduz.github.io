@@ -1,1 +1,563 @@
-<h1>Hello canım</h1>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1440" id="vp">
+<script>/* phones get the mobile layout; tablets and desktops keep the 1440 design */if(Math.min(screen.width,screen.height)<768)document.getElementById('vp').setAttribute('content','width=device-width,initial-scale=1');</script>
+<title>Ismail Gunduz | Senior Product Designer</title>
+<meta name="description" content="Senior Product Designer. Mobile apps and the AI ads that grow them. Braga, Portugal / Remote.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+<style>
+:root{
+  --bg:#0D1019; --bg-2:#0C0F18; --card:#1A1D27; --white:#FFFFFF; --muted:#ABABAB;
+  --blue:#4AB3FD;
+  --grad:linear-gradient(108deg,#4AB3FD 0%,#87B2D6 100%);
+  --line:rgba(255,255,255,.12); --glass:rgba(255,255,255,.04); --glass-line:rgba(255,255,255,.08);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{width:1440px;margin:0 auto;background:var(--bg);color:var(--white);font:400 18px/1.6 Inter,system-ui,-apple-system,"Segoe UI",sans-serif}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+.grad{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.wrap{padding:0 72px}
+.btn{display:inline-flex;align-items:center;gap:10px;height:54px;padding:0 24px;border-radius:100px;font-weight:700;font-size:18px}
+.btn svg{width:18px;height:18px}
+.btn--grad{background:var(--grad);color:#fff}
+.btn--line{border:1px solid #fff;color:#fff}
+.btn--white{background:#fff;color:var(--bg)}
+.btn--sm{height:36px;padding:0 16px;font-size:13px}
+.ph{background:var(--card);display:flex;align-items:center;justify-content:center;color:#5B6070;font-size:9px;font-weight:600;text-transform:uppercase}
+
+/* header */
+header{position:absolute;top:0;left:0;width:max(100vw,1440px);height:64px;padding:0 20px;display:flex;align-items:center;justify-content:space-between;z-index:5}
+header nav{display:flex;gap:32px;font-size:14px;font-weight:600}
+header nav a:hover{color:var(--blue)}
+
+/* hero: the background image holds the phone collage */
+/* full-bleed: breaks out of the 1440px body and keeps the 16:10 composition on wider screens */
+.hero{position:relative;width:100vw;min-width:1440px;margin-left:min(0px,calc(720px - 50vw));height:max(900px,62.5vw);background:#0D1019 url("assets/hero_dark.jpg?v=1") center/cover no-repeat;background-image:image-set(url("assets/hero_dark.jpg?v=1") 1x,url("assets/hero_dark@2x.jpg?v=1") 2x)}
+.hero__content{position:absolute;left:calc(max(0px,50vw - 720px) + 75px);top:33.3%}
+.hero h1{font-size:60px;line-height:69px;font-weight:800;letter-spacing:-1.2px;display:inline-block}
+.hero__lines{margin:10px 0 30px;display:grid;gap:4px}
+.hero__lines span{display:flex;align-items:center;gap:10px}
+.hero__lines svg{width:20px;height:20px;flex:none}
+.hero__role{font-size:24px;font-weight:700;line-height:34px}
+.hero__pitch{font-size:24px;line-height:34px}
+.hero__loc{font-size:20px;line-height:30px;color:rgba(255,255,255,.55)}
+.hero .actions{display:flex;gap:12px}
+
+/* ad reel: overlaps the bottom of the hero */
+.reel{position:relative;margin-top:-66px;padding:0 0 60px;z-index:2}
+.reel__label{padding-left:111px;font-size:20px;font-weight:500;margin-bottom:12px}
+.reel__viewport{position:relative;margin-left:110px;width:1219px;overflow:hidden}
+.reel__track{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none;cursor:grab}
+.reel__track::-webkit-scrollbar{display:none}
+.reel__track.dragging{cursor:grabbing;scroll-snap-type:none;scroll-behavior:auto}
+.reel__card{position:relative;flex:none;width:200px;height:356px;border-radius:14px;overflow:hidden;background:var(--card);scroll-snap-align:start}
+.reel__card video{width:100%;height:100%;object-fit:cover;display:block;pointer-events:none}
+.reel__card .sound{position:absolute;right:8px;bottom:8px;width:30px;height:30px;border-radius:50%;background:rgba(0,0,0,.55);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .2s}
+.reel__card:hover .sound{opacity:1}
+.reel__card .sound svg{width:16px;height:16px}
+.reel__arrow{position:absolute;top:calc(50% + 16px);transform:translateY(-50%);width:36px;height:36px;display:flex;align-items:center;justify-content:center;z-index:3}
+.reel__arrow svg{width:22px;height:22px}
+.reel__arrow--prev{left:68px}
+.reel__arrow--next{right:68px}
+.reel__arrow:disabled{opacity:.3;cursor:default}
+
+/* lightbox */
+.lightbox{position:fixed;inset:0;background:rgba(5,7,12,.92);display:flex;align-items:center;justify-content:center;z-index:50}
+.lightbox[hidden]{display:none}
+.lightbox video{height:86vh;aspect-ratio:9/16;border-radius:16px;background:#000}
+.lightbox--wide video{height:auto;width:min(88vw,1440px);aspect-ratio:16/9}
+.lightbox__close{position:absolute;top:24px;right:32px;width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center}
+.lightbox__close svg{width:22px;height:22px}
+
+/* intro */
+.intro{background:var(--bg-2);padding:50px 0 100px}
+.intro .wrap{display:grid;grid-template-columns:518px 648px;justify-content:space-between}
+.intro p{font-size:18px;line-height:29px;margin-bottom:18px}
+.chips-group{margin-bottom:34px}
+.chips-group h3{font-size:17px;font-weight:800;letter-spacing:-.34px;display:inline-block;margin-bottom:14px}
+.chips{display:flex;flex-wrap:wrap;gap:10px}
+.chip{display:inline-flex;align-items:center;gap:10px;padding:9px 17px;border-radius:100px;font-size:14px;border:1px solid var(--glass-line);background:linear-gradient(137deg,#353442 -166%,#0D0E12 100%)}
+.chip img{width:18px;height:18px;object-fit:contain;display:block;border-radius:4px}
+.chip--more{border-color:var(--blue);color:#fff;cursor:pointer;font-family:inherit}
+.chip--more:hover{background:rgba(74,179,253,.12)}
+.chip--extra{animation:chipIn .25s ease both}
+.chip--extra[hidden]{display:none}
+@keyframes chipIn{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.chip--extra{animation:none}}
+
+/* section heads */
+.block{padding:50px 0 80px}
+.head{text-align:center;margin-bottom:44px}
+.head h2{font-size:32px;font-weight:800;line-height:37px;color:rgba(255,255,255,.75)}
+.head .big{font-size:60px;line-height:69px;font-weight:800;letter-spacing:-1.2px;display:inline-block}
+.head .btn{margin-top:30px}
+
+/* case cards */
+.cards{display:grid;grid-template-columns:repeat(3,412px);justify-content:space-between}
+.card__img{height:287px;border-radius:20px;overflow:hidden;background:var(--card)}
+.card__img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease}
+.card:hover .card__img img{transform:scale(1.03)}
+.card__meta{display:flex;align-items:center;gap:15px;margin-top:20px}
+.card__logo{width:58px;height:58px;border-radius:50%;flex:none;overflow:hidden}
+.card__logo img{width:100%;height:100%;display:block}
+.card__meta h4{font-size:24px;font-weight:700;line-height:28px}
+.card__meta p{font-size:16px;color:var(--muted)}
+
+/* how */
+.how{display:grid;grid-template-columns:repeat(4,309px);justify-content:space-between}
+.how__item{background:var(--glass);border:1px solid var(--glass-line);border-radius:20px;padding:28px 25px;min-height:324px}
+.how__n{font-size:12px;color:var(--blue);font-weight:600;letter-spacing:.4px;text-transform:uppercase}
+.how__item--pm .how__n{color:#9B8CFF}
+.how__item h3{font-size:19px;font-weight:800;line-height:25px;margin:16px 0 10px}
+.how__item p{font-size:15px;line-height:24px;color:rgba(255,255,255,.85)}
+.center{text-align:center;margin-top:32px}
+
+/* experience */
+.exp{width:792px;margin:0 auto}
+.exp__head{width:100%;text-align:left;display:grid;grid-template-columns:196px 50px 1fr 30px;gap:15px;align-items:center;padding:26px 0}
+.exp__year{font-size:16px;white-space:nowrap;color:rgba(255,255,255,.85)}
+.exp__logo{width:50px;height:50px;border-radius:50%}
+.exp__mono{display:flex;align-items:center;justify-content:center;background:rgba(74,179,253,.12);border:1px solid rgba(74,179,253,.35);color:var(--blue);font-size:14px;font-weight:700;letter-spacing:.5px}
+.exp__head[disabled]{cursor:default}
+.exp__logo{overflow:hidden;background:#fff}
+.exp__logo img{width:100%;height:100%;display:block}
+.exp__row+.exp__row{border-top:1px solid rgba(255,255,255,.08)}
+.exp__main h3{font-size:18px;font-weight:700;line-height:21px}
+.exp__role{font-size:14px;font-weight:600;color:var(--blue);margin-top:3px}
+.exp__note{font-size:12px;color:var(--muted)}
+.exp__toggle{width:30px;height:30px;border-radius:50%;border:2px solid var(--blue);display:flex;align-items:center;justify-content:center;color:var(--blue);font-weight:700;font-size:16px;line-height:1}
+.exp__body{padding:0 0 28px 276px;font-size:16px;line-height:26px}
+.exp__body[hidden]{display:none}
+.exp__body p{margin-bottom:12px;color:rgba(255,255,255,.9)}
+.exp__body ul{padding-left:20px;color:rgba(255,255,255,.85)}
+.exp__body li{margin-bottom:6px}
+.exp__body a{display:inline-block;margin-top:10px;color:var(--blue);font-weight:600}
+
+/* contact */
+.contact{text-align:center;padding:40px 0 110px}
+.contact .big{font-size:60px;line-height:69px;font-weight:800;letter-spacing:-1.2px;display:inline-block}
+.contact a{display:block;margin-top:16px;font-size:20px;font-weight:700}
+.contact a:hover{color:var(--blue)}
+
+footer{width:1296px;margin:0 auto;padding:24px 0;font-size:12px;display:flex;justify-content:space-between;border-top:1px solid var(--line)}
+
+/* footer on every page: centred, quiet — a line to reach me, LinkedIn + email, Get in touch */
+footer.site-footer{display:block;width:max(100vw,1440px);margin:0 0 0 min(0px,calc(720px - 50vw));padding:0;border-top:1px solid rgba(255,255,255,.08)}
+.sf__inner{width:1440px;margin:0 auto;padding:28px 36px 30px;display:flex;flex-direction:column;align-items:center;gap:18px;text-align:center}
+.sf__text{margin:0;font-size:15px;font-weight:400;letter-spacing:.1px;color:rgba(255,255,255,.6)}
+.sf__right{display:flex;align-items:center;gap:10px}
+footer.site-footer .sf__icon{display:flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,255,255,.14);color:rgba(255,255,255,.75);transition:color .2s,border-color .2s,background .2s}
+footer.site-footer .sf__icon:hover{color:#fff;border-color:rgba(74,179,253,.6);background:rgba(74,179,253,.08)}
+.sf__icon svg{width:18px;height:18px}
+.sf__dot{width:3px;height:3px;border-radius:50%;background:rgba(255,255,255,.3);margin:0 6px}
+footer.site-footer .sf__cta{color:#4AB3FD;font-size:15px;font-weight:500;letter-spacing:.1px;text-decoration:none;border-bottom:1px solid rgba(74,179,253,.4);padding-bottom:1px;transition:border-color .2s}
+footer.site-footer .sf__cta:hover{border-color:#4AB3FD}
+
+/* diagonal corner ribbon on case thumbnails (downloads / status) */
+.card__img{position:relative}
+.ribbon{position:absolute;top:48px;right:-68px;width:280px;padding:7px 0;transform:rotate(45deg);background:#E0302A;color:#fff;text-align:center;font-size:12px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;box-shadow:0 6px 16px rgba(0,0,0,.28);z-index:1;pointer-events:none}
+
+.card__desc{margin-top:12px;font-size:15px;line-height:22px;color:rgba(255,255,255,.7)}
+
+/* back-to-top: appears after scrolling, bottom right */
+.to-top{position:fixed;right:28px;bottom:28px;width:52px;height:52px;border-radius:50%;border:1px solid rgba(74,179,253,.45);background:rgba(13,16,25,.82);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:90;box-shadow:0 10px 30px rgba(0,0,0,.4);opacity:0;visibility:hidden;transform:translateY(12px);transition:opacity .25s,transform .25s,visibility .25s,background .2s,border-color .2s}
+.to-top.on{opacity:1;visibility:visible;transform:none}
+.to-top:hover{background:#4AB3FD;border-color:#4AB3FD}
+.to-top svg{width:22px;height:22px}
+/* ==================== MOBILE (phones · generated from _work/scripts/mobile/*.css) ==================== */
+@media (max-width:959px){
+/* shell: every page */
+body{width:auto;font-size:16px;overflow-x:hidden}
+.wrap{padding:0 20px}
+header{width:100%;height:56px;padding:0 16px}
+header nav{gap:16px;font-size:13px}
+header nav a:nth-child(3),header nav a:nth-child(4){display:none}
+header .btn--sm{height:32px;padding:0 12px;font-size:12px}
+footer.site-footer{width:auto;margin:0}
+.sf__inner{width:auto;padding:28px 20px 92px}
+.sf__text{font-size:14px}
+.to-top{right:16px;bottom:16px;width:46px;height:46px}
+.lightbox video{height:auto;width:92vw;max-height:82vh}
+.lightbox--wide video{width:96vw}
+.lightbox__close{top:12px;right:12px}
+.zbox img{max-width:96vw;max-height:88vh;border-radius:10px}
+.cards{grid-template-columns:1fr;gap:40px}
+.card__img{height:auto;aspect-ratio:412/287}
+.card__meta{gap:12px;margin-top:16px}
+.card__logo{width:48px;height:48px}
+.card__meta h4{font-size:20px;line-height:24px}
+.card__meta p{font-size:14px}
+.btn{height:48px;padding:0 20px;font-size:16px}
+.block{padding:40px 0 56px}
+.head{margin-bottom:28px}
+.head h2{font-size:20px;line-height:26px}
+.head .big{font-size:40px;line-height:46px;letter-spacing:-.8px}
+.head .btn{margin-top:20px}
+/* home */
+.hero{width:100%;min-width:0;margin-left:0;height:auto;min-height:0;padding:330px 20px 96px;background-size:cover;background-position:70% 0}
+.hero:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(13,16,25,0) 25%,rgba(13,16,25,.82) 52%,var(--bg) 100%)}
+.hero__content{position:relative;left:auto;top:auto;z-index:1}
+.hero h1{font-size:40px;line-height:46px;letter-spacing:-.8px}
+.hero__lines{margin:8px 0 24px}
+.hero__role{font-size:18px;line-height:26px}
+.hero__pitch{font-size:16px;line-height:24px}
+.hero__loc{font-size:15px;line-height:22px}
+.hero__lines svg{width:18px;height:18px}
+.hero .actions{flex-wrap:wrap;gap:10px}
+.reel{margin-top:-40px;padding-bottom:40px}
+.reel__label{padding-left:20px;font-size:17px}
+.reel__viewport{margin-left:0;width:100%}
+.reel__track{gap:12px;padding:0 20px;scroll-padding:0 20px}
+.reel__card{width:150px;height:267px;border-radius:12px}
+.reel__card .sound{opacity:1}
+.reel__arrow{display:none}
+.intro{padding:40px 0 56px}
+.intro .wrap{grid-template-columns:1fr;gap:16px}
+.intro p{font-size:16px;line-height:26px}
+.chips-group{margin-bottom:24px}
+.chip{padding:8px 14px;font-size:13px}
+.how{grid-template-columns:1fr;gap:14px}
+.how__item{min-height:0;padding:22px 20px}
+.exp{width:auto}
+.exp__head{grid-template-columns:44px 1fr 28px;gap:6px 12px;padding:20px 0}
+.exp__year{grid-column:1/-1;font-size:14px;color:var(--muted)}
+.exp__logo{width:44px;height:44px}
+.exp__toggle{width:28px;height:28px}
+.exp__body{padding:0 0 22px;font-size:15px;line-height:24px}
+}
+/* ==================== /MOBILE ==================== */
+</style>
+</head>
+<body>
+
+<header>
+  <nav><a href="index.html">Home</a><a href="case-studies.html">Case Studies</a><a href="#how">How I Work</a><a href="#experience">Experience</a><a href="#contact">Contact</a></nav>
+  <a class="btn btn--grad btn--sm" href="assets/Ismail_Gunduz_CV.pdf" target="_blank" rel="noopener">View Résumé</a>
+</header>
+
+<section class="hero">
+  <div class="hero__content">
+    <h1 class="grad">Ismail Gunduz</h1>
+    <div class="hero__lines">
+      <span class="hero__role"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>Senior Product Designer</span>
+      <span class="hero__pitch"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="2"/><path d="M11 18h2"/></svg>Mobile apps and the AI ads that grow them</span>
+      <span class="hero__loc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12Z"/><circle cx="12" cy="10" r="2.5"/></svg>Braga, Portugal / Remote</span>
+    </div>
+    <div class="actions">
+      <a class="btn btn--grad" href="assets/showreel/showreel_1080.mp4" id="playShowreel"><svg viewBox="0 0 24 24" fill="#fff"><path d="M7 4.5v15l13-7.5z"/></svg>Play Showreel</a>
+      <a class="btn btn--line" href="#contact"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>Get in touch</a>
+    </div>
+  </div>
+</section>
+
+<section class="reel" aria-label="Ad creatives">
+  <div class="reel__label">Ad Creatives</div>
+  <button class="reel__arrow reel__arrow--prev" aria-label="Previous"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg></button>
+  <div class="reel__viewport">
+    <div class="reel__track" id="reelTrack"></div>
+  </div>
+  <button class="reel__arrow reel__arrow--next" aria-label="Next"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></button>
+</section>
+
+<div class="lightbox" id="lightbox" hidden>
+  <button class="lightbox__close" aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+  <video controls playsinline></video>
+</div>
+
+<section class="intro">
+  <div class="wrap">
+    <div>
+      <p>Hello! I'm Ismail. I'm a senior product designer with 12+ years of experience designing mobile and web products.</p>
+      <p>I've designed for telecom, healthcare, gaming, retail and fintech, including products used by millions of people, from concept through to launch.</p>
+      <p>I work across the whole product: research, UX flows, UI, design systems and prototyping, and I stay close to engineering until it ships.</p>
+      <p>Lately most of my work is AI. At Oak Smart I design and produce video ads for consumer AI apps, combining image and video models with After Effects to ship hundreds of tested creatives.</p>
+    </div>
+    <div>
+      <div class="chips-group">
+        <h3 class="grad">Skills</h3>
+        <div class="chips">
+          <span class="chip">Product Design</span><span class="chip">UX Design</span><span class="chip">UI Design</span><span class="chip">Mobile Design</span><span class="chip">Design Systems</span><span class="chip">Prototyping</span><span class="chip">AI Ad Creative</span><span class="chip">Motion Design</span><span class="chip chip--extra" hidden>User Research</span><span class="chip chip--extra" hidden>Wireframing</span><span class="chip chip--extra" hidden>Interaction Design</span><span class="chip chip--extra" hidden>Usability Testing</span><span class="chip chip--extra" hidden>Branding</span><span class="chip chip--extra" hidden>Video Editing</span><button type="button" class="chip chip--more" aria-expanded="false" data-label="+6 more">+6 more</button>
+        </div>
+      </div>
+      <div class="chips-group">
+        <h3 class="grad">Tools</h3>
+        <div class="chips">
+          <span class="chip"><img src="assets/tools/figma.svg" alt="">Figma</span><span class="chip"><img src="assets/tools/aftereffects.svg" alt="">After Effects</span><span class="chip"><img src="assets/tools/claude.svg" alt="">Claude Code</span><span class="chip"><img src="assets/tools/seedance.png" alt="">Seedance</span><span class="chip"><img src="assets/tools/nanobanana.svg" alt="">Nano Banana</span><span class="chip"><img src="assets/tools/kling.png" alt="">Kling</span><span class="chip"><img src="assets/tools/photoshop.svg" alt="">Photoshop</span><span class="chip"><img src="assets/tools/illustrator.svg" alt="">Illustrator</span>
+        </div>
+      </div>
+      <div class="chips-group">
+        <h3 class="grad">Sectors</h3>
+        <div class="chips">
+          <span class="chip">Consumer AI</span><span class="chip">Telecom</span><span class="chip">HealthTech</span><span class="chip">Gaming</span><span class="chip">Fintech</span><span class="chip">Retail</span><span class="chip chip--extra" hidden>E-commerce</span><span class="chip chip--extra" hidden>Sustainability</span><span class="chip chip--extra" hidden>Education</span><span class="chip chip--extra" hidden>Navigation</span><button type="button" class="chip chip--more" aria-expanded="false" data-label="+4 more">+4 more</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="work">
+  <div class="wrap">
+    <div class="head">
+      <h2>Recent projects</h2>
+      <div class="big grad">Case Studies</div><br>
+      <a class="btn btn--white" href="case-studies.html">View all</a>
+    </div>
+    <div class="cards">
+      <a class="card" href="mepic.html">
+        <div class="card__img"><img src="assets/covers/mepic.jpg?v=3" alt="AI Photo App Ads"><span class="ribbon">5M+ downloads</span></div>
+        <div class="card__meta"><div class="card__logo"><img src="assets/covers/logo_mepic.png?v=3" alt=""></div><div><h4>AI Photo App Ads</h4><p>2026</p></div></div>
+      <p class="card__desc">AI photo and video app: product UI and AI-assisted performance video ads.</p>
+      </a>
+      <a class="card" href="bip.html">
+        <div class="card__img"><img src="assets/covers/bip.jpg?v=3" alt="BiP · Turkcell"><span class="ribbon">100M+ downloads</span></div>
+        <div class="card__meta"><div class="card__logo"><img src="assets/covers/logo_bip.png?v=3" alt=""></div><div><h4>BiP · Turkcell</h4><p>2013–2015</p></div></div>
+      <p class="card__desc">Turkcell’s messaging super app: messaging, payment and gamification flows.</p>
+      </a>
+      <a class="card" href="citizenchain.html">
+        <div class="card__img"><img src="assets/covers/citizenchain.jpg?v=3" alt="Citizen Chain"></div>
+        <div class="card__meta"><div class="card__logo"><img src="assets/covers/logo_citizenchain.png?v=3" alt=""></div><div><h4>Citizen Chain</h4><p>2024–2025</p></div></div>
+      <p class="card__desc">Gamified app that rewards everyday sustainability and civic action.</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="how">
+  <div class="wrap">
+    <div class="head">
+      <h2>Design, prototype, advertise, test</h2>
+      <div class="big grad">How I work with AI</div>
+    </div>
+    <div class="how">
+      <div class="how__item how__item--pd"><span class="how__n">01 · Product design</span><h3>Research before pixels</h3><p>I use AI to speed up competitor and user-behavior analysis: store reviews, rival flows and drop-off points become a short list of problems before I open Figma.</p></div>
+      <div class="how__item how__item--pd"><span class="how__n">02 · Product design</span><h3>I prototype in code</h3><p>With Claude Code I turn flows into working prototypes and test them on real devices. BudgetSync, my own budgeting app, went from wireframes to a Flutter build this way.</p></div>
+      <div class="how__item how__item--pm"><span class="how__n">03 · Performance marketing</span><h3>Winning ads, rebuilt with AI</h3><p>I break down the ads that already perform, then rebuild them with Seedance, Kling and Nano Banana and assemble every layer in After Effects: about 100 creatives a month.</p></div>
+      <div class="how__item how__item--pm"><span class="how__n">04 · Performance marketing</span><h3>One variable, real results</h3><p>Each version changes one thing, such as the hook or the person, and is judged on trial starts and cost per trial, not clicks. 191 briefs across 10 apps since January 2026.</p></div>
+    </div>
+    <div class="center"><a class="btn btn--white" href="mepic.html#ads">See the AI ads case study</a></div>
+  </div>
+</section>
+
+<section class="block" id="experience">
+  <div class="wrap">
+    <div class="head">
+      <h2>A brief history of my career</h2>
+      <div class="big grad">Experience</div>
+    </div>
+    <div class="exp">
+      <div class="exp__row">
+        <button class="exp__head" aria-expanded="true">
+          <span class="exp__year">Feb 2020 – Present</span><span class="exp__logo"><img src="assets/companies/oak.png" alt="Oak Smart"></span>
+          <span class="exp__main"><h3>Oak Smart</h3><div class="exp__role">Senior Product Designer</div><div class="exp__note">London, UK · Remote</div></span>
+          <span class="exp__toggle">–</span>
+        </button>
+        <div class="exp__body">
+          <ul>
+            <li>Designed and contributed to 20+ mobile apps, including mePic, AI Chatbot, Homely, Cleaner and Kalo (10M+ total downloads, 4.8/5 average rating).</li>
+            <li>Designed game UI and animations for Braindom (100M+ downloads, 4.6/5 from 2.2M reviews on Google Play).</li>
+            <li>Delivered app icons, store assets, Lottie animations, wireframes, prototypes and UI concepts; ASO assets increased organic acquisition by 15%.</li>
+            <li>Produce AI-assisted performance video ads with After Effects (100 creatives per month; 191 briefs across 10 apps since 01/2026) and automate the video production pipeline.</li>
+          </ul>
+          <a href="mepic.html">Case Study ↗</a>
+        </div>
+      </div>
+      <div class="exp__row">
+        <button class="exp__head" aria-expanded="false">
+          <span class="exp__year">Apr 2019 – Feb 2020</span><span class="exp__logo"><img src="assets/companies/mouthwatch.png" alt="MouthWatch"></span>
+          <span class="exp__main"><h3>MouthWatch</h3><div class="exp__role">Senior UI/UX Designer</div><div class="exp__note">New Jersey, US · Remote</div></span>
+          <span class="exp__toggle">+</span>
+        </button>
+        <div class="exp__body" hidden>
+          <ul>
+            <li>Led end-to-end design of the company’s two core products, Teledentistry and Dentistry.one, as sole designer working with product owners and developers.</li>
+            <li>Designed 100+ screens for video calls, messaging and billing, and established the design system and component library.</li>
+          </ul>
+          <a href="dentistry.html">Case Study ↗</a>
+        </div>
+      </div>
+      <div class="exp__row">
+        <button class="exp__head" aria-expanded="false">
+          <span class="exp__year">Apr 2018 – Apr 2019</span><span class="exp__logo"><img src="assets/companies/glitch.png" alt="Glitch Studios"></span>
+          <span class="exp__main"><h3>Glitch Studios</h3><div class="exp__role">Senior UI/UX Designer</div><div class="exp__note">Norway · Remote</div></span>
+          <span class="exp__toggle">+</span>
+        </button>
+        <div class="exp__body" hidden>
+          <ul>
+            <li>Designed UI and interactions for AR/VR products for Scandinavian clients, increasing user retention by 15% across 3 countries.</li>
+            <li>Designed SaaS platforms and mobile apps for Norwegian clients, including Viljo, Amundsen House and Yacht App.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="exp__row">
+        <button class="exp__head" aria-expanded="false">
+          <span class="exp__year">Aug 2016 – Feb 2018</span><span class="exp__logo"><img src="assets/companies/docnmore.png" alt="DocnMore"></span>
+          <span class="exp__main"><h3>DocnMore</h3><div class="exp__role">Senior UI/UX Designer</div><div class="exp__note">Turkey · Remote</div></span>
+          <span class="exp__toggle">+</span>
+        </button>
+        <div class="exp__body" hidden>
+          <ul>
+            <li>Managed a team of 3 designers delivering telehealth ERP, CRM and dashboard products.</li>
+            <li>Designed mobile apps for Turkey and the Middle East (Qatar, Saudi Arabia), supported by design systems, component libraries and prototypes.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="exp__row">
+        <button class="exp__head" aria-expanded="false">
+          <span class="exp__year">Jan 2015 – Feb 2016</span><span class="exp__logo"><img src="assets/companies/boogy.png" alt="Boogy"></span>
+          <span class="exp__main"><h3>Boogy The Event Company</h3><div class="exp__role">Head of Design</div><div class="exp__note">Turkey · On-site</div></span>
+          <span class="exp__toggle">+</span>
+        </button>
+        <div class="exp__body" hidden>
+          <ul>
+            <li>Developed communication strategies for the Turkish advertising campaigns of global brands, including Volkswagen, Domino’s Pizza and Nike.</li>
+            <li>Created visual design templates and coordinated a team of 6 to deliver weekly campaigns on schedule.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="exp__row">
+        <button class="exp__head" aria-expanded="false">
+          <span class="exp__year">Sep 2013 – Jan 2015</span><span class="exp__logo"><img src="assets/companies/turkcell.png" alt="Turkcell"></span>
+          <span class="exp__main"><h3>Turkcell (BiP)</h3><div class="exp__role">Product Designer</div><div class="exp__note">Turkey · On-site</div></span>
+          <span class="exp__toggle">+</span>
+        </button>
+        <div class="exp__body" hidden>
+          <ul>
+            <li>Designed messaging, payment and gamification flows for BiP, Turkcell’s messaging super app (100M+ downloads).</li>
+            <li>Contributed to the atomic design system and produced social media visuals, ad videos and product tutorial videos.</li>
+          </ul>
+          <a href="bip.html">Case Study ↗</a>
+        </div>
+      </div>
+      <div class="exp__row">
+        <button class="exp__head" aria-expanded="false" disabled>
+          <span class="exp__year">Education</span><span class="exp__logo"><img src="assets/companies/anadolu.png" alt="Anadolu University"></span>
+          <span class="exp__main"><h3>Anadolu University</h3><div class="exp__role">Bachelor’s Degree</div><div class="exp__note">Business Administration and Management</div></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer" id="contact">
+  <div class="sf__inner">
+    <p class="sf__text">Want to work together? Reach me on LinkedIn or by email.</p>
+    <div class="sf__right">
+      <a class="sf__icon" href="https://www.linkedin.com/in/ismail-gunduz/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M8 10.5V16M8 7.8v.01M11.5 16v-5.5M11.5 13c0-1.6 1-2.6 2.3-2.6s2.2.9 2.2 2.6V16"/></svg></a>
+      <a class="sf__icon" href="mailto:ismailgunduz7@gmail.com" aria-label="Email ismailgunduz7@gmail.com"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m4 7.5 8 5.5 8-5.5"/></svg></a>
+      <span class="sf__dot" aria-hidden="true"></span>
+      <a class="sf__cta" href="mailto:ismailgunduz7@gmail.com">Get in touch</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  // 10 ads from assets/ads/: web version plays muted in the strip, full version opens with sound
+  var ADS = ['01_80sFilter', '02_Aging2080', '03_OldPhotoRestore', '04_CouplePortrait', '05_HairChanger',
+             '06_PetDance', '07_AICover', '08_VoiceTranslator', '09_PalmReader', '10_NavigationApp'];
+  var SOUND = '<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><path d="M11 5 6 9H2v6h4l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/></svg>';
+  var track = document.getElementById('reelTrack');
+  ADS.forEach(function (id) {
+    var c = document.createElement('div');
+    c.className = 'reel__card';
+    c.dataset.full = 'assets/ads/full/' + id + '.mp4';
+    c.innerHTML = '<video src="assets/ads/web/' + id + '.mp4" poster="assets/ads/posters/' + id + '.jpg" muted loop playsinline preload="none"></video><span class="sound">' + SOUND + '</span>';
+    track.appendChild(c);
+  });
+  var cards = Array.prototype.slice.call(track.children);
+  var prev = document.querySelector('.reel__arrow--prev');
+  var next = document.querySelector('.reel__arrow--next');
+  var step = 216 * 3;
+
+  // play only the videos that are on screen
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      var v = e.target.querySelector('video');
+      if (e.isIntersecting) { v.preload = 'auto'; v.play().catch(function () {}); }
+      else v.pause();
+    });
+  }, { root: track.parentElement, threshold: 0.4 });
+  cards.forEach(function (c) { io.observe(c); });
+
+  function updateArrows() {
+    prev.disabled = track.scrollLeft < 4;
+    next.disabled = track.scrollLeft + track.clientWidth >= track.scrollWidth - 4;
+  }
+  prev.addEventListener('click', function () { track.scrollBy({ left: -step }); });
+  next.addEventListener('click', function () { track.scrollBy({ left: step }); });
+  track.addEventListener('scroll', updateArrows, { passive: true });
+  updateArrows();
+
+  // drag to scroll with the mouse
+  var down = false, startX = 0, startLeft = 0, moved = false;
+  track.addEventListener('mousedown', function (e) { down = true; moved = false; startX = e.pageX; startLeft = track.scrollLeft; e.preventDefault(); });
+  window.addEventListener('mousemove', function (e) {
+    if (!down) return;
+    var dx = e.pageX - startX;
+    if (Math.abs(dx) > 5) { moved = true; track.classList.add('dragging'); }
+    track.scrollLeft = startLeft - dx;
+  });
+  window.addEventListener('mouseup', function () { down = false; track.classList.remove('dragging'); });
+
+  // click a card: full-quality video with sound
+  var lb = document.getElementById('lightbox');
+  var lbVideo = lb.querySelector('video');
+  cards.forEach(function (c) {
+    c.addEventListener('click', function () {
+      if (moved) return;
+      lbVideo.src = c.dataset.full;
+      lb.hidden = false;
+      lbVideo.muted = false;
+      lbVideo.play().catch(function () {});
+    });
+  });
+  function closeLb() { lbVideo.pause(); lbVideo.removeAttribute('src'); lbVideo.removeAttribute('poster'); lbVideo.load(); lb.hidden = true; lb.classList.remove('lightbox--wide'); }
+
+  // hero: the showreel opens in the same player, 16:9
+  document.getElementById('playShowreel').addEventListener('click', function (e) {
+    e.preventDefault();
+    lb.classList.add('lightbox--wide');
+    lbVideo.poster = 'assets/showreel/poster.jpg';
+    lbVideo.src = this.getAttribute('href');
+    lb.hidden = false;
+    lbVideo.muted = false;
+    lbVideo.play().catch(function () {});
+  });
+  lb.querySelector('.lightbox__close').addEventListener('click', closeLb);
+  lb.addEventListener('click', function (e) { if (e.target === lb) closeLb(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !lb.hidden) closeLb(); });
+
+  // "+N more" chips: show the rest of the group, then offer "Show less"
+  document.querySelectorAll('.chip--more').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var open = b.getAttribute('aria-expanded') === 'true';
+      b.parentElement.querySelectorAll('.chip--extra').forEach(function (c) { c.hidden = open; });
+      b.setAttribute('aria-expanded', String(!open));
+      b.textContent = open ? b.dataset.label : 'Show less';
+    });
+  });
+
+  // experience accordion
+  document.querySelectorAll('.exp__head').forEach(function (h) {
+    h.addEventListener('click', function () {
+      var body = h.nextElementSibling, open = h.getAttribute('aria-expanded') === 'true';
+      h.setAttribute('aria-expanded', String(!open));
+      body.hidden = open;
+      h.querySelector('.exp__toggle').textContent = open ? '+' : '–';
+    });
+  });
+})();
+</script>
+<button class="to-top" id="toTop" type="button" aria-label="Back to top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button>
+<script>
+(function(){const b=document.getElementById('toTop');
+const f=()=>b.classList.toggle('on',window.scrollY>700);
+window.addEventListener('scroll',f,{passive:true});f();
+b.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));})();
+</script>
+</body>
+</html>
